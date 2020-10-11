@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:royaltrade/screen/Authentication/login.dart';
 
 class SignUp2 extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class SignUp2 extends StatefulWidget {
 
 class _SignUp2State extends State<SignUp2> {
   bool passwordVisible = true;
-
+  bool tick = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,10 +17,10 @@ class _SignUp2State extends State<SignUp2> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("images/backGround2.png"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
-          child: ListView(
+          child: Column(
             children: <Widget>[
               Container(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
@@ -30,7 +31,7 @@ class _SignUp2State extends State<SignUp2> {
                       height: 20,
                     ),
                     Text(
-                     'Create New Account',
+                      'Create New Account',
                       style: TextStyle(fontSize: 20),
                     ),
                     SizedBox(
@@ -113,7 +114,14 @@ class _SignUp2State extends State<SignUp2> {
                       height: 20,
                     ),
                     ListTile(
-                      leading: Checkbox(onChanged: null,value: false,),
+                      leading: Checkbox(
+                        onChanged: (value) {
+                          setState(() {
+                            tick = !tick;
+                          });
+                        },
+                        value: tick,
+                      ),
                       title: Text('I Accept the policy and terms'),
                     ),
                     FlatButton(
@@ -166,7 +174,7 @@ class _SignUp2State extends State<SignUp2> {
                       ],
                     ),
                     SizedBox(
-                      height: 180,
+                      height: 100,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -179,7 +187,13 @@ class _SignUp2State extends State<SignUp2> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Login2(),
+                                ));
+                          },
                           child: Text(
                             'Sign In',
                             style: TextStyle(

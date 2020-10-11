@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:royaltrade/screen/Authentication/signup.dart';
+
 class Login2 extends StatefulWidget {
   @override
   _Login2State createState() => _Login2State();
@@ -15,7 +17,7 @@ class _Login2State extends State<Login2> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("images/backGround2.png"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: ListView(
@@ -26,7 +28,7 @@ class _Login2State extends State<Login2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image(
-                      image: AssetImage('imageslogo2.png'),
+                      image: AssetImage('images/Logo.png'),
                     ),
                     SizedBox(
                       height: 50,
@@ -144,7 +146,7 @@ class _Login2State extends State<Login2> {
                       ],
                     ),
                     SizedBox(
-                      height: 190,
+                      height: 110,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -157,7 +159,13 @@ class _Login2State extends State<Login2> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUp2(),
+                                ));
+                          },
                           child: Text(
                             'Register',
                             style: TextStyle(

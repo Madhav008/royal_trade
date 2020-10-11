@@ -27,9 +27,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(0, 20, 52, 1),
+      backgroundColor: Color(0xff001535).withOpacity(0.5),
       drawer: Container(),
       appBar: AppBar(
+        backgroundColor: Color(0xff001535),
         centerTitle: true,
         title: Text("Royal Trade"),
       ),
@@ -39,15 +40,15 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
       ),
       bottomNavigationBar: new BottomNavigationBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xff3fb2eb),
         currentIndex: _pageIndex,
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white,), title: Text("Home")),
           BottomNavigationBarItem(
-              icon: Icon(Icons.mail), title: Text("Messages")),
+              icon: Icon(Icons.mail,color: Colors.white,), title: Text("Messages")),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text("Profile")),
+              icon: Icon(Icons.person,color: Colors.white,), title: Text("Profile")),
         ],
       ),
     );

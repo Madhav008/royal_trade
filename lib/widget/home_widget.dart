@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -15,63 +14,99 @@ class HomeWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
-                   color: Color.fromRGBO(16, 41, 87, 1),
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Forex Signal"),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                          icon: Icon(Icons.access_time), onPressed: null),
-                    )
-                  ],
-                )),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                   color: Color.fromRGBO(16, 41, 87, 1),
+                    color: Color(0xff1F375D),
                     child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Vip Signal"),
+                      height: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Forex Signal",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                icon: Icon(Icons.access_time), onPressed: null),
+                          )
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                            icon: Icon(Icons.access_time), onPressed: null),
-                      )
-                    ],
-                  ),
-                )),
+                    )),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
-                   color: Color.fromRGBO(16, 41, 87, 1),
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Forex Signal"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                          icon: Icon(Icons.access_time), onPressed: null),
-                    )
-                  ],
-                )),
+                    color: Color(0xff1F375D),
+                    child: Container(
+                      height: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Vip Signal",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                icon: Icon(Icons.access_time), onPressed: null),
+                          )
+                        ],
+                      ),
+                    )),
               ),
-              
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Color(0xff1F375D),
+                    child: Container(
+                      height: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Binary Signal",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                icon: Icon(Icons.access_time), onPressed: null),
+                          )
+                        ],
+                      ),
+                    )),
+              ),
             ],
           )
         ],

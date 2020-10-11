@@ -5,7 +5,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      drawer: Container(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Royal Trade"),
+      ),
       body: Column(children: [
         SizedBox(height: 20,),
         Card(
@@ -24,18 +28,21 @@ class MyHomePage extends StatelessWidget {
           )
         ),
         Card(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+          child: Container(
+            height: 150,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Vip Signal"),
+                ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("Forex Signal"),
-              ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(icon: Icon(Icons.access_time), onPressed: null),
-            )
-            ],
+                child: IconButton(icon: Icon(Icons.access_time), onPressed: null),
+              )
+              ],
+            ),
           )
         ),
         Card(

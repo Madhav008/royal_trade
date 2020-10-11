@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:royaltrade/screen/Authentication/login.dart';
+import 'package:royaltrade/screen/Authentication/signup.dart';
 
 class Default2 extends StatelessWidget {
   @override
@@ -19,13 +21,15 @@ class Default2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Image(
-                    image: AssetImage('images/logo2.png'),
+                    image: AssetImage('images/Logo.png'),
                   ),
                   SizedBox(height: 5,),
                   Column(
                     children: <Widget>[
                       FlatButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Login2(),));
+                        },
                         child: Container(
                           height: 55,
                           decoration: BoxDecoration(
@@ -42,7 +46,9 @@ class Default2 extends StatelessWidget {
                       ),
                       SizedBox(height: 50,),
                       FlatButton(
-                        onPressed: (){},
+                        onPressed: (){
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp2(),));
+                        },
                         child: Container(
                           height: 55,
                           decoration: BoxDecoration(

@@ -20,7 +20,7 @@ class _SignUp2State extends State<SignUp2> {
               fit: BoxFit.fill,
             ),
           ),
-          child: Column(
+          child: ListView(
             children: <Widget>[
               Container(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),

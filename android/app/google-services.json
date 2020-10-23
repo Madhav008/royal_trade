@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "360526899063",
+    "firebase_url": "https://coppytrading-d6134.firebaseio.com",
+    "project_id": "coppytrading-d6134",
+    "storage_bucket": "coppytrading-d6134.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360526899063:android:1d304fa1161401507f6372",
+        "android_client_info": {
+          "package_name": "com.example.coppytrading"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdavbof_JHra4xxeIRS8cfroYmobqDl3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360526899063:android:3619daea8e6259a17f6372",
+        "android_client_info": {
+          "package_name": "com.forex.royaltrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdavbof_JHra4xxeIRS8cfroYmobqDl3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

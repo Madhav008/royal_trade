@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:royaltrade/screen/Authentication/login.dart';
-import 'package:royaltrade/screen/Authentication/signup.dart';
+import 'package:royaltrade/Authentication/login.dart';
+import 'package:royaltrade/Authentication/signup.dart';
 
 class Default2 extends StatelessWidget {
   @override

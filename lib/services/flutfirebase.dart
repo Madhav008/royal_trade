@@ -21,13 +21,10 @@ class FireStoreServices {
   }
 
   Future<void> addUser(Users user) {
-    return _db
-        .collection('user')
-        .doc(user.userId)
-        .set(user.toMap());
+    return _db.collection('user').doc(user.userId).set(user.toMap());
   }
 
-  Future<void> fetchUser(String userId) {
+  Future<Users> fetchUser(String userId) {
     return _db
         .collection('user')
         .doc(userId)

@@ -29,6 +29,7 @@ dependencies:
   firebase_core: ^0.5.0+1
   flutter_bloc: ^6.0.6
   get: ^3.13.2
+  google_fonts: ^1.1.1
   google_sign_in: ^4.5.5
   http: ^0.12.2
   provider: ^4.3.2+2

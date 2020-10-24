@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:royaltrade/model/user.dart';
 import 'package:royaltrade/services/flutfirebase.dart';
@@ -9,7 +10,7 @@ import 'package:rxdart/subjects.dart';
 final RegExp regExpEmail = RegExp(
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-class AuthBloc {
+class AuthBloc with ChangeNotifier {
   final _email = BehaviorSubject<String>();
   final _password = BehaviorSubject<String>();
   final _name = BehaviorSubject<String>();
@@ -63,7 +64,7 @@ class AuthBloc {
 
   //Functions
 
-  signupEmail() async {
+  Future<User> signupEmail(context) async {
     print('Signing up with username and password');
     try {
       UserCredential authResult = await _auth.createUserWithEmailAndPassword(
@@ -76,18 +77,21 @@ class AuthBloc {
           isAdmin: false,
           image: null);
       await _firestoreService.addUser(user);
+      return Future.value(authResult.user);
     } catch (error) {
-      print(error);
+      showErrDialog(context, error.code);
     }
   }
 
-  signInEmail() async {
-    print('Signing up with username and password');
+  Future<User> signInEmail(context) async {
     try {
       UserCredential authResult = await _auth.signInWithEmailAndPassword(
           email: _email.value.trim(), password: _password.value.trim());
-    } catch (error) {
-      print(error);
+
+      return Future.value(authResult.user);
+    } catch (e) {
+      print(e);
+      showErrDialog(context, e.code);
     }
   }
 
@@ -99,9 +103,11 @@ class AuthBloc {
     }
   }
 
+  final gooleSignIn = GoogleSignIn();
+
+  // ignore: missing_return
   Future<bool> googleSignIn() async {
-    final GoogleSignInAccount googleSignInAccount =
-        await GoogleSignIn().signIn();
+    GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
     if (googleSignInAccount != null) {
       GoogleSignInAuthentication googleSignInAuthentication =
@@ -110,6 +116,8 @@ class AuthBloc {
       AuthCredential credential = GoogleAuthProvider.credential(
           idToken: googleSignInAuthentication.idToken,
           accessToken: googleSignInAuthentication.accessToken);
+
+      await _auth.signInWithCredential(credential);
 
       UserCredential result = await _auth.signInWithCredential(credential);
 
@@ -121,6 +129,8 @@ class AuthBloc {
           isAdmin: false,
           image: result.user.photoURL);
       await _firestoreService.addUser(user);
+
+      return Future.value(true);
     }
   }
 
@@ -128,5 +138,28 @@ class AuthBloc {
     await FirebaseAuth.instance.signOut();
     await _auth.signOut();
     return Future.value(true);
+  }
+
+  showErrDialog(BuildContext context, String err) async {
+    BuildContext dialogContext;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        dialogContext = context;
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text(err),
+          actions: <Widget>[
+            OutlineButton(
+              onPressed: () {
+                Navigator.pop(dialogContext);
+              },
+              child: Text("Ok"),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

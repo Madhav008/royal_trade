@@ -22,15 +22,14 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-
 class _MyAppState extends State<MyApp> {
-  
-@override
-void dispose() {
-  authBloc.dispose();
-  super.dispose();
-}
 
+
+  @override
+  void dispose() {
+    authBloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +49,18 @@ void dispose() {
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            home: (FirebaseAuth.instance.currentUser!=null)?DataScreen(uid:FirebaseAuth.instance.currentUser.uid):Login2(),
-           ),
+            home: StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return DataScreen(
+                    uid: FirebaseAuth.instance.currentUser.uid,
+                  );
+                } else {
+                  return Login2();
+                }
+              },
+            )),
       ),
     );
   }

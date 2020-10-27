@@ -10,7 +10,7 @@ import 'package:rxdart/subjects.dart';
 final RegExp regExpEmail = RegExp(
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-class AuthBloc with ChangeNotifier {
+class AuthBloc {
   final _email = BehaviorSubject<String>();
   final _password = BehaviorSubject<String>();
   final _name = BehaviorSubject<String>();
@@ -65,8 +65,9 @@ class AuthBloc with ChangeNotifier {
   //Functions
 
   Future<User> signupEmail(context) async {
-    print('Signing up with username and password');
     try {
+      loadingDialog();
+
       UserCredential authResult = await _auth.createUserWithEmailAndPassword(
           email: _email.value.trim(), password: _password.value.trim());
       var user = Users(
@@ -85,6 +86,7 @@ class AuthBloc with ChangeNotifier {
 
   Future<User> signInEmail(context) async {
     try {
+      loadingDialog();
       UserCredential authResult = await _auth.signInWithEmailAndPassword(
           email: _email.value.trim(), password: _password.value.trim());
 
@@ -110,6 +112,7 @@ class AuthBloc with ChangeNotifier {
     GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
     if (googleSignInAccount != null) {
+      loadingDialog();
       GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.authentication;
 
@@ -121,6 +124,8 @@ class AuthBloc with ChangeNotifier {
 
       UserCredential result = await _auth.signInWithCredential(credential);
 
+      var existingUser = await _firestoreService.fetchUser(result.user.uid);
+
       var user = Users(
           userId: result.user.uid,
           name: result.user.displayName,
@@ -128,7 +133,9 @@ class AuthBloc with ChangeNotifier {
           email: result.user.email,
           isAdmin: false,
           image: result.user.photoURL);
-      await _firestoreService.addUser(user);
+      if (existingUser == null) {
+        await _firestoreService.addUser(user);
+      }
 
       return Future.value(true);
     }
@@ -148,7 +155,9 @@ class AuthBloc with ChangeNotifier {
       builder: (BuildContext context) {
         dialogContext = context;
         return AlertDialog(
-          title: Text("Error"),
+          title: Text(
+            "Error",
+          ),
           content: Text(err),
           actions: <Widget>[
             OutlineButton(
@@ -160,6 +169,20 @@ class AuthBloc with ChangeNotifier {
           ],
         );
       },
+    );
+  }
+
+  loadingDialog() {
+    return SimpleDialog(
+      title: Center(child: Text("Wait")),
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+      ],
     );
   }
 }

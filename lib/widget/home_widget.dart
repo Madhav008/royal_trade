@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/widget/Card.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -12,38 +13,43 @@ class HomeWidget extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              CardWidget( "Forex Signal"),
-              CardWidget( "Binary Signal"),
-              CardWidget( "VIP Signal"),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FreeSignalScreen(),
+                        ));
+                  },
+                  child: CardWidget("Forex Signal")),
+              GestureDetector(onTap: null, child: CardWidget("Binary Signal")),
+              GestureDetector(onTap: null, child: CardWidget("VIP Signal")),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
-                            color: Color(0xff1F375D),
-
+                  color: Color(0xff1F375D),
                   shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),  
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                            "Recent News",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
+                          "Recent News",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Container(
-                          height: MediaQuery.of(context).size.height/2,
-                          width: MediaQuery.of(context).size.width-20,
-                        
+                          height: MediaQuery.of(context).size.height / 2,
+                          width: MediaQuery.of(context).size.width - 20,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('images/bitcoin.jpg'),
-                              fit: BoxFit.cover
-                            ),
+                                image: AssetImage('images/bitcoin.jpg'),
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -58,5 +64,3 @@ class HomeWidget extends StatelessWidget {
     );
   }
 }
-
-

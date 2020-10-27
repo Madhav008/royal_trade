@@ -14,6 +14,7 @@ class SignUp2 extends StatefulWidget {
 class _SignUp2State extends State<SignUp2> {
   bool passwordVisible = true;
   bool tick = false;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final authBloc = Provider.of<AuthBloc>(context);
@@ -21,41 +22,45 @@ class _SignUp2State extends State<SignUp2> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff232946),
-        body: Container(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Create New Account',
-                  style: GoogleFonts.laila(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 30,
-                    color: Color(0xffb8c1ec),
+        body: ListView(
+          children: <Widget>[
+            Center(
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 25.0),
+                  child: Text(
+                    'Create New Account',
+                    style: GoogleFonts.laila(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 30,
+                      color: Color(0xffb8c1ec),
+                    ),
                   ),
                 ),
               ),
-           Spacer(),
-              StreamBuilder<String>(
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                  top: 10.0, left: 10, right: 10, bottom: 10),
+              child: StreamBuilder<String>(
                   stream: authBloc.name,
                   builder: (context, snapshot) {
                     return TextField(
                       style: TextStyle(color: Colors.white),
                       onChanged: authBloc.changeName,
                       decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.grey,
+                        ),
                         hintText: "Full Name",
-                        hintStyle: TextStyle(
-                            color: Colors.grey[400], fontSize: 18),
+                        hintStyle:
+                            TextStyle(color: Colors.grey[400], fontSize: 18),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffeebbc3)),
+                          borderSide: BorderSide(color: Color(0xffeebbc3)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffFA80B2)),
+                          borderSide: BorderSide(color: Color(0xffFA80B2)),
                         ),
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
@@ -63,24 +68,29 @@ class _SignUp2State extends State<SignUp2> {
                       ),
                     );
                   }),
-             Spacer(),
-              StreamBuilder<String>(
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                  top: 10.0, left: 10, right: 10, bottom: 10),
+              child: StreamBuilder<String>(
                   stream: authBloc.username,
                   builder: (context, snapshot) {
                     return TextField(
                       style: TextStyle(color: Colors.white),
                       onChanged: authBloc.changeUsername,
                       decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.person,
+                          color: Colors.grey,
+                        ),
                         hintText: "User Name",
-                        hintStyle: TextStyle(
-                            color: Colors.grey[400], fontSize: 18),
+                        hintStyle:
+                            TextStyle(color: Colors.grey[400], fontSize: 18),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffeebbc3)),
+                          borderSide: BorderSide(color: Color(0xffeebbc3)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffFA80B2)),
+                          borderSide: BorderSide(color: Color(0xffFA80B2)),
                         ),
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
@@ -88,26 +98,30 @@ class _SignUp2State extends State<SignUp2> {
                       ),
                     );
                   }),
-                         Spacer(),
-
-              StreamBuilder<String>(
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                  top: 10.0, left: 10, right: 10, bottom: 5),
+              child: StreamBuilder<String>(
                   stream: authBloc.email,
                   builder: (context, snapshot) {
                     return TextField(
                       style: TextStyle(color: Colors.white),
                       onChanged: authBloc.changeEmail,
                       decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.mail,
+                          color: Colors.grey,
+                        ),
                         errorText: snapshot.error,
                         hintText: "Enter your email",
-                        hintStyle: TextStyle(
-                            color: Colors.grey[400], fontSize: 18),
+                        hintStyle:
+                            TextStyle(color: Colors.grey[400], fontSize: 18),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffeebbc3)),
+                          borderSide: BorderSide(color: Color(0xffeebbc3)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0xffFA80B2)),
+                          borderSide: BorderSide(color: Color(0xffFA80B2)),
                         ),
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
@@ -115,7 +129,11 @@ class _SignUp2State extends State<SignUp2> {
                       ),
                     );
                   }),
-              StreamBuilder<String>(
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                  top: 0.0, left: 10, right: 10, bottom: 10),
+              child: StreamBuilder<String>(
                   stream: authBloc.password,
                   builder: (context, snapshot) {
                     return TextField(
@@ -123,42 +141,45 @@ class _SignUp2State extends State<SignUp2> {
                       onChanged: authBloc.changePassword,
                       obscureText: passwordVisible,
                       decoration: InputDecoration(
-                          errorText: snapshot.error,
-                          hintText: "Enter your password",
-                          hintStyle: TextStyle(
-                              color: Colors.grey[400], fontSize: 18),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xffeebbc3)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xffFA80B2)),
-                          ),
-                          border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
-                          ),
-                          suffix: IconButton(
-                            iconSize: 25,
-                            onPressed: () {
-                              setState(() {
-                                passwordVisible = !passwordVisible;
-                              });
-                            },
-                            icon: Icon(
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.grey,
+                        ),
+                        errorText: snapshot.error,
+                        hintText: "Enter your password",
+                        hintStyle:
+                            TextStyle(color: Colors.grey[400], fontSize: 18),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xffeebbc3)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xffFA80B2)),
+                        ),
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        suffix: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              passwordVisible = !passwordVisible;
+                            });
+                          },
+                          icon: Icon(
                               passwordVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Theme.of(context).primaryColorDark,
-                            ),
-                          )),
+                              color: Color(0xffFA80B2)),
+                        ),
+                      ),
                     );
                   }),
-                         Spacer(),
-
-              ListTile(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
                 leading: Checkbox(
-                  checkColor: Colors.white,
+                  activeColor: Color(0xffeebbc3),
+                  focusColor: Colors.white,
                   onChanged: (value) {
                     setState(() {
                       tick = !tick;
@@ -171,7 +192,10 @@ class _SignUp2State extends State<SignUp2> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              StreamBuilder<bool>(
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 20),
+              child: StreamBuilder<bool>(
                   stream: authBloc.isValid,
                   builder: (context, snapshot) {
                     if (snapshot.data == true) {
@@ -179,7 +203,7 @@ class _SignUp2State extends State<SignUp2> {
                         onPressed: () {
                           authBloc.signupEmail(context).then((value) {
                             if (value.uid != null) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DataScreen(
@@ -228,9 +252,10 @@ class _SignUp2State extends State<SignUp2> {
                       );
                     }
                   }),
-                        Spacer(),
-
-              Row(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image(
@@ -245,15 +270,23 @@ class _SignUp2State extends State<SignUp2> {
                   ),
                   InkWell(
                     onTap: () {
+                      setState(() {
+                        isLoading = true;
+                      });
                       authBloc.googleSignIn().whenComplete(() async {
                         var user = FirebaseAuth.instance.currentUser;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DataScreen(
-                                uid: user.uid,
-                              ),
-                            ));
+                        if (user.uid != null) {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DataScreen(
+                                  uid: user.uid,
+                                ),
+                              ));
+                        }
                       });
                     },
                     child: Text(
@@ -266,9 +299,10 @@ class _SignUp2State extends State<SignUp2> {
                   ),
                 ],
               ),
-                         Spacer(),
-
-              Row(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
@@ -280,7 +314,8 @@ class _SignUp2State extends State<SignUp2> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
+                        
                           context,
                           MaterialPageRoute(
                             builder: (context) => Login2(),
@@ -297,8 +332,8 @@ class _SignUp2State extends State<SignUp2> {
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

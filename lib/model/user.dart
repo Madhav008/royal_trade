@@ -25,11 +25,15 @@ class Users {
     };
   }
 
-  Users.fromFirestore(Map<String, dynamic> firestore)
-      : userId = firestore['userId'],
-        username = firestore['username'],
-        name = firestore['name'],
-        image = firestore['image'],
-        email = firestore['email'],
-        isAdmin = firestore['isAdmin'];
+  factory Users.fromFirestore(Map<String, dynamic> firestore) {
+    if (firestore == null) return null;
+
+    return Users(
+        email: firestore['email'],
+        userId: firestore['userId'],
+        username: firestore['username'],
+        name: firestore['name'],
+        image: firestore['image'],
+        isAdmin: firestore['isAdmin']); 
+  }
 }

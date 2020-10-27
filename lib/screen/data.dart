@@ -15,6 +15,12 @@ class DataScreen extends StatefulWidget {
 }
 
 class _DataScreenState extends State<DataScreen> {
+  @override
+  void initState() {
+    super.initState();
+    var authBloc = Provider.of<AuthBloc>(context, listen: false);
+  }
+
   String title;
   String des;
   DateTime date = DateTime.now();
@@ -37,25 +43,31 @@ class _DataScreenState extends State<DataScreen> {
               })
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
           FutureBuilder(
             future: firestoreService.fetchUser(widget.uid),
             builder: (context, snapshot) {
               Users user = snapshot.data;
-              return Column(
-                children: [
-                  Container(
-                    child: Text(user.name),
-                  ),
-                  Container(
-                    child: Text(user.email),
-                  ),
-                  Container(
-                      // child: Image.network(user.image),
-                      ),
-                ],
-              );
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    Container(
+                      child: Text(user.name),
+                    ),
+                    Container(
+                      child: Text(user.email),
+                    ),
+                    Container(
+                        // child: Image.network(user.image),
+                        ),
+                  ],
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
             },
           ),
           Padding(
@@ -100,9 +112,25 @@ class _DataScreenState extends State<DataScreen> {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => PostScreen(),
                   )),
-              child: Text("data"))
+              child: Text("data")),
+          AlertDialog(
+            title: Text(
+              "Error",
+            ),
+            content: Text("Wrong Password"),
+            actions: <Widget>[
+              OutlineButton(
+                onPressed: () {
+                  Navigator.canPop(context);
+                },
+                child: Text("Ok"),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
+
+ 
 }

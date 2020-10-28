@@ -32,7 +32,7 @@ class SignalWidget extends StatelessWidget {
                                 onPressed: () {
                                   var signal0 = SignalId(
                                       id: id,
-                                      type: 'closed');
+                                      type: 'closed',pips: '+12');
                                   _signalRefrence.addUser(signal0);
                                 })
                           ],

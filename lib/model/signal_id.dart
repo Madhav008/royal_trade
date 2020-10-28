@@ -15,11 +15,13 @@ class SignalId {
     this.id,
     this.type,
     this.threadId,
+    this.pips,
   });
 
   String id;
   String type;
   String threadId;
+  String pips;
 
   factory SignalId.fromJson(Map<String, dynamic> json) => SignalId(
         id: json["id"],
@@ -31,8 +33,9 @@ class SignalId {
         "threadId": threadId,
       };
 
-       Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
         "id": id,
         "type": type,
+        "pips":pips,
       };
 }

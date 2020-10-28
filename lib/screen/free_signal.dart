@@ -29,7 +29,7 @@ class _FreeSignalScreenState extends State<FreeSignalScreen> {
             Container(
               child: Tab(
                 child: Text(
-                  "Signals",
+                  "Open Signals",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -37,7 +37,7 @@ class _FreeSignalScreenState extends State<FreeSignalScreen> {
             Container(
               child: Tab(
                 child: Text(
-                  "Trades History",
+                  "Closed Signal",
                   style: TextStyle(fontSize: 20),
                 ),
               ),

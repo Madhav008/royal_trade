@@ -4,9 +4,7 @@ import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/widget/signal_widget.dart';
 
 class OpenSignal extends StatelessWidget {
-  const OpenSignal({
-    Key key,
-  }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {

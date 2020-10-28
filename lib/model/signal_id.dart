@@ -18,7 +18,7 @@ class SignalId {
   });
 
   String id;
-  String type = 'open';
+  String type;
   String threadId;
 
   factory SignalId.fromJson(Map<String, dynamic> json) => SignalId(
@@ -34,6 +34,5 @@ class SignalId {
        Map<String, dynamic> toMap() => {
         "id": id,
         "type": type,
-        "threadId": threadId,
       };
 }

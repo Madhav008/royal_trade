@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/model/signal.dart';
+import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/repository/api.dart';
+import 'package:royaltrade/services/signal_services.dart';
 
 class SignalWidget extends StatelessWidget {
-  const SignalWidget({
-    Key key,
+  SignalWidget({
     @required this.id,
-  }) : super(key: key);
+  });
 
   final String id;
 
+  SignalFirestore _signalRefrence = SignalFirestore();
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -25,6 +27,14 @@ class SignalWidget extends StatelessWidget {
                           children: [
                             Text(snapshot.data[0].curr),
                             Text(id),
+                            IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                                  var signal0 = SignalId(
+                                      id: id,
+                                      type: 'closed');
+                                  _signalRefrence.addUser(signal0);
+                                })
                           ],
                         ),
                       ),

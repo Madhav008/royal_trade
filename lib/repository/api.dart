@@ -4,12 +4,12 @@ import 'package:royaltrade/model/signal_id.dart';
 
 Future<List<SignalId>> getData() async {
   var response =
-      await http.get("https://80a4c166ed05.ngrok.io");
+      await http.get("http://dd6a9b5aa711.ngrok.io");
   return signalIdFromJson(response.body);
 }
 
 Future<List<Chart>> getSignalData(String id) async {
   var response =
-      await http.get("https://80a4c166ed05.ngrok.io/" + id);
+      await http.get("http://dd6a9b5aa711.ngrok.io/" + id);
   return chartFromJson(response.body);
 }

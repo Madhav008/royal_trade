@@ -17,36 +17,39 @@ class _FreeSignalScreenState extends State<FreeSignalScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Free Signal"),
-        centerTitle: true,
-        bottom: TabBar(
-          indicatorColor: Colors.grey[200],
-          indicatorWeight: 5.0,
-          isScrollable: false,
-          tabs: [
-            Container(
-              child: Tab(
-                child: Text(
-                  "Open Signals",
-                  style: TextStyle(fontSize: 20),
+    return DefaultTabController(
+      length: 2,
+          child: Scaffold(
+        appBar: AppBar(
+          title: Text("Free Signal"),
+          centerTitle: true,
+          bottom: TabBar(
+            indicatorColor: Colors.grey[200],
+            indicatorWeight: 5.0,
+            isScrollable: false,
+            tabs: [
+              Container(
+                child: Tab(
+                  child: Text(
+                    "Open Signals",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              child: Tab(
-                child: Text(
-                  "Closed Signal",
-                  style: TextStyle(fontSize: 20),
+              Container(
+                child: Tab(
+                  child: Text(
+                    "Closed Signal",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      body: TabBarView(
-        children: [OpenSignal(), ClosedSignal()],
+        body: TabBarView(
+          children: [OpenSignal(), ClosedSignal()],
+        ),
       ),
     );
   }

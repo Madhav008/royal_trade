@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:royaltrade/bloc/signal_Id_bloc.dart';
 import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/services/signal_services.dart';

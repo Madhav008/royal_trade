@@ -45,38 +45,47 @@ class _SignalWidgetState extends State<SignalWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return (pips==false)? Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FutureBuilder<List<Chart>>(
-            future: getSignalData(widget.id),
-            builder: (context, snapshot) {
-              return (snapshot.hasData)
-                  ? Card(
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Text(snapshot.data[0].curr),
-                            Text(widget.id),
-                            IconButton(
-                                icon: Icon(Icons.edit),
-                                onPressed: () {
-                                  var signal0 = SignalId(
-                                      id: widget.id,
-                                      type: 'closed',
-                                      pips: null);
-                                  _signal.addSignal(signal0);
-                                })
-                          ],
-                        ),
-                      ),
-                      color: Colors.grey[200],
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    );
-            }),
-      ),
-    ): SizedBox(height: 0,);
+    return (pips == false)
+        ? Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder<List<Chart>>(
+                  future: getSignalData(widget.id),
+                  builder: (context, snapshot) {
+                    return (snapshot.hasData)
+                        ? Card(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Text(snapshot.data[0].curr),
+                                  Text(widget.id),
+                                  IconButton(
+                                      icon: Icon(Icons.edit),
+                                      onPressed: () {
+                                        var signal0 = SignalId(
+                                            id: widget.id,
+                                            type: 'closed',
+                                            title: snapshot.data[0].title,
+                                            curr: snapshot.data[0].curr,
+                                            price: snapshot.data[0].price,
+                                            slPrice: snapshot.data[0].slPrice,
+                                            tpPrice: snapshot.data[0].tpPrice,
+                                            pips: null);
+                                        _signal.addSignal(signal0);
+                                      })
+                                ],
+                              ),
+                            ),
+                            color: Colors.grey[200],
+                          )
+                        : Center(
+                            child: CircularProgressIndicator(),
+                          );
+                  }),
+            ),
+          )
+        : SizedBox(
+            height: 0,
+          );
   }
 }

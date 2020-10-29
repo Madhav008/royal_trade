@@ -4,21 +4,52 @@ import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/repository/api.dart';
 import 'package:royaltrade/services/signal_services.dart';
 
-class SignalWidget extends StatelessWidget {
+class SignalWidget extends StatefulWidget {
   SignalWidget({
     @required this.id,
   });
 
   final String id;
 
-  SignalFirestore _signalRefrence = SignalFirestore();
+  @override
+  _SignalWidgetState createState() => _SignalWidgetState();
+}
+
+class _SignalWidgetState extends State<SignalWidget> {
+  SignalFirestore _signal = SignalFirestore();
+  bool pips = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getPips(widget.id);
+  }
+
+  getPips(String id) {
+    _signal.getPips(id).then((value) {
+      print(value.docs[0].data().values);
+      if (value.docs[0].data().values.contains('closed') == true) {
+        setState(() {
+          pips = true;
+          return pips;
+        });
+      } else {
+        setState(() {
+          pips = false;
+          return pips;
+        });
+      }
+    });
+    return pips;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return (pips==false)? Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder<List<Chart>>(
-            future: getSignalData(id),
+            future: getSignalData(widget.id),
             builder: (context, snapshot) {
               return (snapshot.hasData)
                   ? Card(
@@ -26,14 +57,15 @@ class SignalWidget extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(snapshot.data[0].curr),
-                            Text(id),
+                            Text(widget.id),
                             IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () {
                                   var signal0 = SignalId(
-                                      id: id,
-                                      type: 'closed',pips: '+12');
-                                  _signalRefrence.addUser(signal0);
+                                      id: widget.id,
+                                      type: 'closed',
+                                      pips: null);
+                                  _signal.addSignal(signal0);
                                 })
                           ],
                         ),
@@ -45,6 +77,6 @@ class SignalWidget extends StatelessWidget {
                     );
             }),
       ),
-    );
+    ): SizedBox(height: 0,);
   }
 }

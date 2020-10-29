@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/model/signal.dart';
 import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/repository/api.dart';
+import 'package:royaltrade/screen/pips_edit.dart';
 import 'package:royaltrade/services/signal_services.dart';
 
 class SignalWidget extends StatefulWidget {
@@ -62,16 +63,15 @@ class _SignalWidgetState extends State<SignalWidget> {
                                   IconButton(
                                       icon: Icon(Icons.edit),
                                       onPressed: () {
-                                        var signal0 = SignalId(
-                                            id: widget.id,
-                                            type: 'closed',
-                                            title: snapshot.data[0].title,
-                                            curr: snapshot.data[0].curr,
-                                            price: snapshot.data[0].price,
-                                            slPrice: snapshot.data[0].slPrice,
-                                            tpPrice: snapshot.data[0].tpPrice,
-                                            pips: null);
-                                        _signal.addSignal(signal0);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PipsEditScreen(
+                                                snapshot: snapshot,
+                                                id: widget.id,
+                                              ),
+                                            ));
                                       })
                                 ],
                               ),

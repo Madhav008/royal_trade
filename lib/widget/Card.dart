@@ -8,30 +8,48 @@ class CardWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          color: Color(0xff1F375D),
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(20),
+        // ),
+          color: Color(0xff232946),
           child: Container(
+            decoration: BoxDecoration(
+
+              image: DecorationImage(image: AssetImage('images/adx.png',),fit: BoxFit.cover),
+              borderRadius: BorderRadius.only(topRight:  Radius.circular(40),bottomLeft:  Radius.circular(40)),
+
+
+            ),
+
             height: 100,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: CircleAvatar(
+                //     backgroundImage: AssetImage('images/bitcoin.jpg'),
+                //     radius: 40,
+                //   ),
+                // ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('images/bitcoin.jpg'),
-                    radius: 40,
+                  padding: const EdgeInsets.only(left: 50),
+                  child:
+                  Text(
+                    name,
+                    style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                   name,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  padding: const EdgeInsets.only(left: 5),
+                  child:
+                  Icon(
+                      Icons.ac_unit
                   ),
                 ),
-                SizedBox(width: 90,),
-                
+                SizedBox(
+                  width: 90,
+                ),
               ],
             ),
           )),

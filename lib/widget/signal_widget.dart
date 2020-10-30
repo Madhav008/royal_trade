@@ -45,19 +45,44 @@ class _SignalWidgetState extends State<SignalWidget> {
   @override
   Widget build(BuildContext context) {
     return (pips == false)
-        ? Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FutureBuilder<List<Chart>>(
-                  future: getSignalData(widget.id),
-                  builder: (context, snapshot) {
-                    return (snapshot.hasData)
-                        ? Card(
+        ? Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FutureBuilder<List<Chart>>(
+              future: getSignalData(widget.id),
+              builder: (context, snapshot) {
+                var _data = snapshot.data[0];
+                return (snapshot.hasData)
+                    ? Container(
+                        height: 120,
+                        width: MediaQuery.of(context).size.width,
+                        child: Card(
+                          elevation: 15.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              child: Column(
+                              child: Stack(
                                 children: [
-                                  Text(snapshot.data[0].curr),
-                                  Text(widget.id),
+                                  Positioned(
+                                    right: 10,
+                                      child: Container(
+                                          child: Text(_data.curr))),
+                                  Positioned(
+                                    top: 50,
+                                      child: Container(
+                                          child: Text(_data.price))),
+                                  Positioned(
+                                    bottom: 1,
+                                      left: 0,
+                                      child: Container(
+                                          child: Text(_data.slPrice))),
+                                  Positioned(
+                                    bottom: 1,
+                                      right: 0,
+                                      child: Container(
+                                          child: Text(_data.tpPrice))),
+                                  Positioned(
+                                      child: Container(
+                                          child: Text(_data.title))),
                                   IconButton(
                                       icon: Icon(Icons.edit),
                                       onPressed: () {
@@ -74,14 +99,15 @@ class _SignalWidgetState extends State<SignalWidget> {
                                 ],
                               ),
                             ),
-                            color: Colors.grey[200],
-                          )
-                        : Center(
-                            child: CircularProgressIndicator(),
-                          );
-                  }),
-            ),
-          )
+                          ),
+                          color: Colors.grey[200],
+                        ),
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(),
+                      );
+              }),
+        )
         : SizedBox(
             height: 0,
           );

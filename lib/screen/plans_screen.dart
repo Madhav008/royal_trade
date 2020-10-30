@@ -6,25 +6,57 @@ import 'package:royaltrade/services/plan_services.dart';
 class PlansScreen extends StatelessWidget {
   PlansFirestore plans = PlansFirestore();
   String userId = '58kh0ywWMWWUE0dFLnjdq8P9Ky13';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
           backgroundColor: Colors.white,
-          elevation: 0,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0, bottom: 20),
-                child: Text(
-                  'Pricing',
-                  style: TextStyle(fontSize: 50),
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "Plans",
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            bottom: TabBar(
+              indicatorColor: Colors.grey[200],
+              indicatorWeight: 5.0,
+              isScrollable: false,
+              tabs: [
+                Container(
+                  child: Tab(
+                    child: Text(
+                      "Starter",
+                      style: TextStyle(fontSize: 18,color: Colors.black),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  child: Tab(
+                    child: Text(
+                      "Pro",
+                      style: TextStyle(fontSize: 18,color: Colors.black),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Tab(
+                    child: Text(
+                      "Premium",
+                      style: TextStyle(fontSize: 18,color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          body: TabBarView(
+
+            children: [
               GestureDetector(
                 onTap: () {
                   var date = DateTime.now().add(Duration(days: 7));
@@ -64,8 +96,8 @@ class PlansScreen extends StatelessWidget {
                   },
                   child: PlansWidget()),
             ],
-          ),
-        ));
+          )),
+    );
   }
 }
 

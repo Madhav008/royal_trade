@@ -17,9 +17,47 @@ class ClosedSignal extends StatelessWidget {
                 var post =
                     SignalId.fromFirestore(snapshot.data.docs[index].data());
 
-                return (post.type=="closed")?ListTile(
-                  title: Text(post.title),
-                  subtitle: Text(post.curr),
+                return (post.type=="closed")?Container(
+                  height: 120,
+                  width: MediaQuery.of(context).size.width,
+                  child: Card(
+                    elevation: 15.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Stack(
+                          children: [
+                            Positioned(
+                                right: 10,
+                                child: Container(
+                                    child: Text(post.curr))),
+                            Positioned(
+                                top: 50,
+                                child: Container(
+                                    child: Text(post.price))),
+                            Positioned(
+                                bottom: 1,
+                                left: 0,
+                                child: Container(
+                                    child: Text(post.slPrice))),
+                            Positioned(
+                                bottom: 1,
+                                right: 0,
+                                child: Container(
+                                    child: Text(post.tpPrice))),
+                            Positioned(
+                                child: Container(
+                                    child: Text(post.title))),
+                            IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed: () {null;  },)
+                          ],
+                        ),
+                      ),
+                    ),
+                    color: Colors.grey[200],
+                  ),
+                
                 ):SizedBox(height: 0,);
               },
               itemCount: snapshot.data.docs.length,

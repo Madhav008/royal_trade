@@ -44,11 +44,11 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _pageIndex,
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white,), title: Text("Home")),
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white,), label:"Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.mail,color: Colors.white,), title: Text("Messages")),
+              icon: Icon(Icons.mail,color: Colors.white,), label:"Messages"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person,color: Colors.white,), title: Text("Profile")),
+              icon: Icon(Icons.person,color: Colors.white,), label:"Profile"),
         ],
       ),
     );

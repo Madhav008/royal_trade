@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/model/signal.dart';
-import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/repository/api.dart';
 import 'package:royaltrade/screen/pips_edit.dart';
 import 'package:royaltrade/services/signal_services.dart';
@@ -28,7 +27,6 @@ class _SignalWidgetState extends State<SignalWidget> {
 
   getPips(String id) {
     _signal.getPips(id).then((value) {
-      print(value.docs[0].data().values);
       if (value.docs[0].data().values.contains('closed') == true) {
         setState(() {
           pips = true;

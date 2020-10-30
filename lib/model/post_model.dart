@@ -1,15 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Posts {
   String title;
   String description;
   String img;
-
-  Posts({this.title, this.description,  this.img});
+  Timestamp date;
+  Posts({this.title, this.description, this.img,this.date});
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'description': description,
-      // 'date': date,
+      'date': date,
       'image': img
     };
   }
@@ -17,6 +19,6 @@ class Posts {
   Posts.fromFirestore(Map<String, dynamic> firestore)
       : title = firestore['title'],
         description = firestore['description'],
-        // date = firestore['date'],
+        date = firestore['date'],
         img = firestore['image'];
 }

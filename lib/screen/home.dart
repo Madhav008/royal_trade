@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/Authentication/signup.dart';
+import 'package:royaltrade/screen/admin_screen.dart';
 import 'package:royaltrade/widget/home_widget.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Royal Trade"),
       ),
       body: PageView(
-        children: [HomeWidget(), Login2(), SignUp2()],
+        children: [HomeWidget(), AdminScreen(), SignUp2()],
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),

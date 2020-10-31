@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:royaltrade/model/post_model.dart';
@@ -54,6 +55,11 @@ class HomeWidget extends StatelessWidget {
               },
               child: CardWidget("VIP Signal")),
           Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: Text("Recent News",style: TextStyle(color: Colors.white,fontSize: 23),),
+          ),
+
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
               color: Color(0xff1F375D),
@@ -79,6 +85,7 @@ class HomeWidget extends StatelessWidget {
                             post.title,
                             style: TextStyle(color: Colors.white),
                           ),
+                          leading: Image.network(post.img),
                           subtitle: Text(
                             _date,
                             style: TextStyle(color: Colors.white),

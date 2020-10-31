@@ -30,12 +30,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff001535).withOpacity(0.5),
+      backgroundColor: Color(0xff232946),
       drawer: Container(),
       appBar: AppBar(
+        elevation: 8,
         backgroundColor: Color(0xff001535),
         centerTitle: true,
-        title: Text("Royal Trade"),
+        title: Text("Royal Trade",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
       ),
       body: PageView(
         children: [HomeWidget(widget.uid), AdminScreen(), SignUp2()],
@@ -43,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
       ),
       bottomNavigationBar: new BottomNavigationBar(
-        backgroundColor: Color(0xff3fb2eb),
+        backgroundColor: Color(0xff001535),
+        elevation: 8,
         currentIndex: _pageIndex,
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
@@ -52,13 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.home,
                 color: Colors.white,
               ),
-              label: "Home"),
+              label: "Home",backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.mail,
                 color: Colors.white,
               ),
-              label: "Messages"),
+              label: "Messages",backgroundColor: Colors.yellow ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,

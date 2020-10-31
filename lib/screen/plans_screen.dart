@@ -5,7 +5,8 @@ import 'package:royaltrade/services/plan_services.dart';
 
 class PlansScreen extends StatelessWidget {
   PlansFirestore plans = PlansFirestore();
-  String userId = '58kh0ywWMWWUE0dFLnjdq8P9Ky13';
+  String uid;
+  PlansScreen(this.uid);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Starter",
-                      style: TextStyle(fontSize: 18,color: Colors.black),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ),
                 ),
@@ -38,7 +39,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Pro",
-                      style: TextStyle(fontSize: 18,color: Colors.black),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ),
                 ),
@@ -46,16 +47,14 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Premium",
-                      style: TextStyle(fontSize: 18,color: Colors.black),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-
           body: TabBarView(
-
             children: [
               GestureDetector(
                 onTap: () {
@@ -63,7 +62,7 @@ class PlansScreen extends StatelessWidget {
                   var plan = Subscription(
                       planId: "basic",
                       price: 200,
-                      userId: userId,
+                      userId: uid,
                       start: Timestamp.now(),
                       end: Timestamp.fromDate(date),
                       transId: 'basic');
@@ -75,6 +74,7 @@ class PlansScreen extends StatelessWidget {
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 30));
                     var plan = Subscription(
+                        userId: uid,
                         transId: "medium",
                         price: 300,
                         start: Timestamp.now(),
@@ -87,6 +87,7 @@ class PlansScreen extends StatelessWidget {
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 365));
                     var plan = Subscription(
+                        userId: uid,
                         transId: "premium",
                         price: 400,
                         start: Timestamp.now(),

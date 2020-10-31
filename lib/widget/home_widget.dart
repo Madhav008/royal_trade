@@ -48,7 +48,7 @@ class HomeWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PlansScreen(),
+                        builder: (context) => PlansScreen(uid),
                       ));
                 }
               },

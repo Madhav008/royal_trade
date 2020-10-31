@@ -6,7 +6,7 @@ class PlansFirestore {
   FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<Subscription> addPlans(Subscription plans) {
-    return _db.collection('Subscription').doc(plans.planId).set(plans.toMap());
+    return _db.collection('Subscription').doc().set(plans.toMap());
   }
 
   Future<Subscription> getPlans(String id ) {

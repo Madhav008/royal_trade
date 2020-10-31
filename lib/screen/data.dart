@@ -28,7 +28,6 @@ class _DataScreenState extends State<DataScreen> {
 
   FireStoreServices firestoreService = new FireStoreServices();
   @override
-  @override
   Widget build(BuildContext context) {
     var authBloc = Provider.of<AuthBloc>(context);
     return Scaffold(

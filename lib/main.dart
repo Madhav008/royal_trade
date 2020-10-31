@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                primaryColor: Color.fromRGBO(149, 76, 233, 1),
+                primaryColor: Color(0xff232946),
                 primaryColorDark: Color.fromRGBO(149, 76, 233, 1),
                 primarySwatch: Colors.blue,
                 visualDensity: VisualDensity.adaptivePlatformDensity,

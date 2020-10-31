@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:royaltrade/model/plans.dart';
 import 'package:royaltrade/model/subscription.dart';
-import 'package:royaltrade/model/user.dart';
+
 
 class PlansFirestore {
   FirebaseFirestore _db = FirebaseFirestore.instance;

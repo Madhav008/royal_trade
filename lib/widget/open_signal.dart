@@ -20,7 +20,7 @@ class _OpenSignalState extends State<OpenSignal> {
           var id = snapshot.data;
           // getPips(id[0].id);
           return (snapshot.hasData)
-              ? Column(children: [
+              ? ListView(children: [
                   SignalWidget(id: id[0].id),
                   SignalWidget(id: id[1].id),
                   SignalWidget(id: id[2].id)

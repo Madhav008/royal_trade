@@ -18,4 +18,6 @@ class SignalFirestore {
         .where('id', isEqualTo: id)
         .get();
   }
+
+  
 }

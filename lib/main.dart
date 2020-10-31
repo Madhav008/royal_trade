@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/root_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
 import 'package:royaltrade/bloc/signal_Id_bloc.dart';
+import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -50,18 +53,16 @@ class _MyAppState extends State<MyApp> {
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
               home:
-                  MyHomePage() /* StreamBuilder(
+                 /*  MyHomePage() */  StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return DataScreen(
+                  return MyHomePage(
                     uid: FirebaseAuth.instance.currentUser.uid,
                   );
                 } else {
                   return Login2();
                 }
-              }, */
-              )),
-    );
+    }))));
   }
 }

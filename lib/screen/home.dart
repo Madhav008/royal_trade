@@ -5,6 +5,9 @@ import 'package:royaltrade/screen/admin_screen.dart';
 import 'package:royaltrade/widget/home_widget.dart';
 
 class MyHomePage extends StatefulWidget {
+  String uid;
+
+  MyHomePage({this.uid});
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -36,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Royal Trade"),
       ),
       body: PageView(
-        children: [HomeWidget(), AdminScreen(), SignUp2()],
+        children: [HomeWidget(widget.uid), AdminScreen(), SignUp2()],
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),
@@ -45,11 +48,24 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _pageIndex,
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.white,), label:"Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.mail,color: Colors.white,), label:"Messages"),
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person,color: Colors.white,), label:"Profile"),
+              icon: Icon(
+                Icons.mail,
+                color: Colors.white,
+              ),
+              label: "Messages"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              label: "Profile"),
         ],
       ),
     );

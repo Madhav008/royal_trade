@@ -4,11 +4,16 @@ import 'package:intl/intl.dart';
 import 'package:royaltrade/model/post_model.dart';
 import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
+import 'package:royaltrade/screen/vip_signal.dart';
 import 'package:royaltrade/widget/Card.dart';
 
 class HomeWidget extends StatelessWidget {
+  String uid;
+  HomeWidget(this.uid);
   CollectionReference post = FirebaseFirestore.instance.collection('Posts');
 
+  CollectionReference subscription =
+      FirebaseFirestore.instance.collection('Subscription');
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,12 +33,24 @@ class HomeWidget extends StatelessWidget {
               child: CardWidget("Forex Signal")),
           GestureDetector(onTap: null, child: CardWidget("Binary Signal")),
           GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlansScreen(),
-                    ));
+              onTap: () async {
+                var data =
+                    await subscription.where('userId', isEqualTo: uid).get();
+                print(data.docChanges);
+                if (data.docChanges.isNotEmpty) {
+                  // print(data.docs[0].data().values);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VipSignalScreen(),
+                      ));
+                } else {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlansScreen(),
+                      ));
+                }
               },
               child: CardWidget("VIP Signal")),
           Padding(

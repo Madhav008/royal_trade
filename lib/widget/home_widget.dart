@@ -34,11 +34,11 @@ class HomeWidget extends StatelessWidget {
           GestureDetector(onTap: null, child: CardWidget("Binary Signal")),
           GestureDetector(
               onTap: () async {
-                var data =
-                    await subscription.where('userId', isEqualTo: uid).get();
+
+                var data = await subscription.where('userId', isEqualTo: uid).where('end',isGreaterThanOrEqualTo: Timestamp.now()).get();
                 print(data.docChanges);
+
                 if (data.docChanges.isNotEmpty) {
-                  // print(data.docs[0].data().values);
                   Navigator.push(
                       context,
                       MaterialPageRoute(

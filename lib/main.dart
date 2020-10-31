@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
 import 'package:royaltrade/bloc/signal_Id_bloc.dart';
-import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 

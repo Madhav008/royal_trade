@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/bloc/signal_Id_bloc.dart';
 import 'package:royaltrade/model/signal_id.dart';
-import 'package:royaltrade/services/signal_services.dart';
 import 'package:royaltrade/widget/signal_widget.dart';
 
 class OpenSignal extends StatefulWidget {
@@ -10,7 +9,6 @@ class OpenSignal extends StatefulWidget {
 }
 
 class _OpenSignalState extends State<OpenSignal> {
-  SignalFirestore _signal = SignalFirestore();
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ class _DataScreenState extends State<DataScreen> {
   @override
   void initState() {
     super.initState();
-    var authBloc = Provider.of<AuthBloc>(context, listen: false);
+    Provider.of<AuthBloc>(context, listen: false);
   }
 
   String title;

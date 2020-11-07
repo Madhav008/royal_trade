@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:royaltrade/model/post_model.dart';
+import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
 import 'package:royaltrade/screen/vip_signal.dart';
@@ -35,8 +36,10 @@ class HomeWidget extends StatelessWidget {
           GestureDetector(onTap: null, child: CardWidget("Binary Signal")),
           GestureDetector(
               onTap: () async {
-
-                var data = await subscription.where('userId', isEqualTo: uid).where('end',isGreaterThanOrEqualTo: Timestamp.now()).get();
+                var data = await subscription
+                    .where('userId', isEqualTo: uid)
+                    .where('end', isGreaterThanOrEqualTo: Timestamp.now())
+                    .get();
                 print(data.docChanges);
 
                 if (data.docChanges.isNotEmpty) {
@@ -56,9 +59,11 @@ class HomeWidget extends StatelessWidget {
               child: CardWidget("VIP Signal")),
           Padding(
             padding: const EdgeInsets.all(6.0),
-            child: Text("Recent News",style: TextStyle(color: Colors.white,fontSize: 23),),
+            child: Text(
+              "Recent News",
+              style: TextStyle(color: Colors.white, fontSize: 23),
+            ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -81,13 +86,22 @@ class HomeWidget extends StatelessWidget {
                         DateTime date = post.date.toDate();
                         var _date = DateFormat('yyyy-MM-dd').format(date);
                         return ListTile(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DataScreen(
+                                  uid: uid,
+                                ),
+                              )),
+                          trailing: Text(_date,
+                              style: TextStyle(color: Colors.white)),
                           title: Text(
                             post.title,
                             style: TextStyle(color: Colors.white),
                           ),
                           leading: Image.network(post.img),
                           subtitle: Text(
-                            _date,
+                            post.description,
                             style: TextStyle(color: Colors.white),
                           ),
                         );

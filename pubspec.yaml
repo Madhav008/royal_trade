@@ -36,6 +36,7 @@ dependencies:
   intl: ^0.16.1
   provider: ^4.3.2+2
   rxdart: ^0.24.1
+  bordered_text: ^1.0.1
 
 dev_dependencies:
   flutter_test:

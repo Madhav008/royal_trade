@@ -8,6 +8,8 @@ import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
 import 'package:royaltrade/screen/vip_signal.dart';
 import 'package:royaltrade/widget/Card.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:bordered_text/bordered_text.dart';
 
 class HomeWidget extends StatelessWidget {
   String uid;
@@ -22,7 +24,7 @@ class HomeWidget extends StatelessWidget {
       child: Stack(children: [
         Column(children: [
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           GestureDetector(
               onTap: () {
@@ -32,8 +34,114 @@ class HomeWidget extends StatelessWidget {
                       builder: (context) => FreeSignalScreen(),
                     ));
               },
-              child: CardWidget("Forex Signal")),
-          GestureDetector(onTap: null, child: CardWidget("Binary Signal")),
+            child: Card(
+                elevation: 0,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(20),
+                // ),
+                color: Color(0xff232946),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.bottomCenter,
+                       colors: [Color(0xfff6d365),Color(0xfffda085)],
+                        ),
+                       borderRadius: BorderRadius.only(
+                           topRight:  Radius.circular(40),bottomLeft:  Radius.circular(40)
+                      ),
+                    ),
+
+                    height: 70,
+                    child: Row(
+
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Icon(Icons.euro,size: 30,color: Colors.blue,),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: BorderedText(
+                            strokeWidth: 1,
+                            child: Text(
+                              "Free Forex Signals",
+                              style: GoogleFonts.sansita(textStyle: TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold)),
+
+                            ),
+                          ),
+                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 0),
+                        //   child: Icon(Icons.ac_unit),
+                        // ),
+                        SizedBox(
+                          width: 90,
+                        ),
+                      ],
+                    ),
+                  ),
+                )),),
+          GestureDetector(onTap: null, child: Card(
+              elevation: 0,
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.circular(20),
+              // ),
+              color: Color(0xff232946),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [Color(0xff2af598),Color(0xff009efd)],
+                    ),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(40)
+                    ),
+                  ),
+                  height: 70,
+                  child: Row(
+
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 13),
+                        child: Icon(Icons.attach_money,size: 35,color: Colors.red,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: BorderedText(
+                          strokeWidth: 1,
+                          child: Text(
+                            "Free Binary Signals",
+                            style: GoogleFonts.sansita(textStyle: TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(left: 0),
+                      //   child: Icon(Icons.ac_unit),
+                      // ),
+                      SizedBox(
+                        width: 90,
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+
+          ),
           GestureDetector(
               onTap: () async {
                 var data = await subscription
@@ -56,7 +164,110 @@ class HomeWidget extends StatelessWidget {
                       ));
                 }
               },
-              child: CardWidget("VIP Signal")),
+            child: Card(
+                elevation: 0,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(20),
+                // ),
+                color: Color(0xff232946),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xffc471f5),Color(0xfffa71cd)],
+                      ),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(40)
+                      ),
+                    ),
+                    height: 70,
+                    child: Row(
+
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Icon(Icons.add_business,size: 30,color: Colors.greenAccent,),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: BorderedText(
+                            strokeWidth: 1,
+                            child: Text(
+                              "Forex VIP",
+                              style: GoogleFonts.sansita(textStyle: TextStyle(color: Colors.white,fontSize: 32,fontWeight: FontWeight.bold)),
+                            ),
+                          ),
+                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 0),
+                        //   child: Icon(Icons.ac_unit),
+                        // ),
+                        SizedBox(
+                          width: 90,
+                        ),
+                      ],
+                    ),
+                  ),
+                )),),
+          GestureDetector(onTap: null, child: Card(
+              elevation: 0,
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.circular(20),
+              // ),
+              color: Color(0xff232946),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0xff48c6ef),Color(0xff6f86d6)],
+                    ),
+                    borderRadius: BorderRadius.only(
+                        topRight:  Radius.circular(40),bottomLeft:  Radius.circular(40)
+                    ),
+                  ),
+                  height: 70,
+                  child: Row(
+
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Icon(Icons.add_business,size: 30,color: Colors.yellow,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: BorderedText(
+                          strokeWidth: 1,
+                          child: Text(
+                            "Binary VIP",
+                            style: GoogleFonts.sansita(textStyle: TextStyle(color: Colors.white,fontSize: 32,fontWeight: FontWeight.bold )),
+                          ),
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(left: 0),
+                      //   child: Icon(Icons.ac_unit),
+                      // ),
+                      SizedBox(
+                        width: 90,
+                      ),
+                    ],
+                  ),
+                ),
+              )),),
           Padding(
             padding: const EdgeInsets.all(6.0),
             child: Text(
@@ -67,51 +278,48 @@ class HomeWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
-              color: Color(0xff1F375D),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: StreamBuilder(
-                stream: post.snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Something went wrong");
-                  }
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        var post = Posts.fromFirestore(
-                            snapshot.data.docs[index].data());
-                        DateTime date = post.date.toDate();
-                        var _date = DateFormat('yyyy-MM-dd').format(date);
-                        return ListTile(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DataScreen(
-                                  uid: uid,
-                                ),
-                              )),
-                          trailing: Text(_date,
-                              style: TextStyle(color: Colors.white)),
-                          title: Text(
-                            post.title,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          leading: Image.network(post.img),
-                          subtitle: Text(
-                            post.description,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        );
-                      },
-                      itemCount: snapshot.data.docs.length,
-                    );
-                  } else {
-                    return Center(child: Text("loading"));
-                  }
-                },
+              color: Color(0xff232946),
+              elevation: 0,
+
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/news1.png"),fit: BoxFit.fitWidth
+                  )
+                ),
+                child: StreamBuilder(
+                  stream: post.snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Something went wrong");
+                    }
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          var post = Posts.fromFirestore(
+                              snapshot.data.docs[index].data());
+                          DateTime date = post.date.toDate();
+                          var _date = DateFormat('yyyy-MM-dd').format(date);
+                          return ListTile(
+                            title: Text(
+                              post.title,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            leading: Image.network(post.img),
+                            subtitle: Text(
+                              _date,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          );
+                        },
+                        itemCount: snapshot.data.docs.length,
+                      );
+                    } else {
+                      return Center(child: Text("loading"));
+                    }
+                  },
+                ),
               ),
             ),
           )

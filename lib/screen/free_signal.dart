@@ -20,11 +20,15 @@ class _FreeSignalScreenState extends State<FreeSignalScreen> {
     return DefaultTabController(
       length: 2,
           child: Scaffold(
+            backgroundColor: Color(0xff232946),
         appBar: AppBar(
-          title: Text("Free Signal"),
+          backgroundColor: Color(0xff001535),
+          elevation: 8,
+          title: Text("Free Forex Signals",style: TextStyle(fontWeight: FontWeight.bold),),
           centerTitle: true,
           bottom: TabBar(
-            indicatorColor: Colors.grey[200],
+
+            indicatorColor: Colors.grey[100],
             indicatorWeight: 5.0,
             isScrollable: false,
             tabs: [

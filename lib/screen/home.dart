@@ -45,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: new BottomNavigationBar(
         backgroundColor: Color(0xff001535),
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
         elevation: 8,
         currentIndex: _pageIndex,
         onTap: onTabTapped,
@@ -54,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.home,
                 color: Colors.white,
               ),
-              label: "Home",backgroundColor: Colors.white),
+              label: "Home",backgroundColor: Color(0xff2af598),),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.mail,

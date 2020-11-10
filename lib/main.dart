@@ -5,7 +5,6 @@ import 'package:get/get_navigation/src/root/root_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
-import 'package:royaltrade/bloc/signal_Id_bloc.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -23,12 +22,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final authBloc = AuthBloc();
-  final signalId = SignalIdBloc();
 
   @override
   void dispose() {
     authBloc.dispose();
-    signalId.dispose();
     super.dispose();
   }
 
@@ -41,7 +38,6 @@ class _MyAppState extends State<MyApp> {
             Provider(
               create: (context) => authBloc,
             ),
-            Provider(create: (context) => signalId,)
           ],
           child: MaterialApp(
               debugShowCheckedModeBanner: false,

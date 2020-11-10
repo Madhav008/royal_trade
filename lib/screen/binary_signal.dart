@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:royaltrade/bloc/forexvip_id.dart';
+import 'package:royaltrade/bloc/binary_id.dart';
+import 'package:royaltrade/widget/binary_open.dart';
 import 'package:royaltrade/widget/closed_signal.dart';
-import 'package:royaltrade/widget/open_signal.dart';
+import 'package:royaltrade/widget/forexvip.dart';
 
-class FreeSignalScreen extends StatefulWidget {
+class BinarySignal extends StatefulWidget {
   @override
-  _FreeSignalScreenState createState() => _FreeSignalScreenState();
+  _BinarySignalState createState() => _BinarySignalState();
 }
 
-class _FreeSignalScreenState extends State<FreeSignalScreen> {
+class _BinarySignalState extends State<BinarySignal> {
   @override
   void initState() {
-    forexvipId..getId();
+    // TODO: implement initState
     super.initState();
+    binaryId..getId();
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-          child: Scaffold(
-            backgroundColor: Color(0xff232946),
+      child: Scaffold(
+        backgroundColor: Color(0xff232946),
         appBar: AppBar(
           backgroundColor: Color(0xff001535),
           elevation: 8,
-          title: Text("Free Forex Signals",style: TextStyle(fontWeight: FontWeight.bold),),
+          title: Text(
+            "Free Forex Signals",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
           bottom: TabBar(
-
             indicatorColor: Colors.grey[100],
             indicatorWeight: 5.0,
             isScrollable: false,
@@ -52,13 +56,9 @@ class _FreeSignalScreenState extends State<FreeSignalScreen> {
           ),
         ),
         body: TabBarView(
-          children: [OpenSignal(), ClosedSignal()],
+          children: [BinaryOpenSignal(), ClosedSignal()],
         ),
       ),
     );
   }
 }
-
-
-
-

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/services/plan_services.dart';
 
+// ignore: must_be_immutable
 class PlansScreen extends StatelessWidget {
   PlansFirestore plans = PlansFirestore();
   String uid;

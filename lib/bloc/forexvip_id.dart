@@ -2,11 +2,11 @@ import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/repository/api.dart';
 import 'package:rxdart/rxdart.dart';
 
-class SignalIdBloc {
+class ForexVipId {
   final _subject = BehaviorSubject<List<SignalId>>();
 
   getId() async {
-    List<SignalId> reaponse = await getData();
+    List<SignalId> reaponse = await getForexvipData();    
     _subject.sink.add(reaponse);
   }
 
@@ -17,4 +17,4 @@ class SignalIdBloc {
   BehaviorSubject<List<SignalId>> get subject => _subject;
 }
 
-final signalIdBloc = SignalIdBloc();
+final forexvipId = ForexVipId();

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/model/signal_id.dart';
 
 // ignore: must_be_immutable
-class ClosedSignal extends StatelessWidget {
+class ClosedVipSignal extends StatelessWidget {
   CollectionReference signal =
-      FirebaseFirestore.instance.collection('FreeSignal');
+      FirebaseFirestore.instance.collection('ForexVipSignal');
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -78,23 +78,23 @@ class ClosedSignal extends StatelessWidget {
                                       Text("Closed",style: TextStyle(
                                           fontSize: 23,fontWeight: FontWeight.bold,color: Colors.red
                                       ),))),
-                              // Positioned(
-                              //   right: 10,
-                              //   top: 50,
-                                // child: IconButton(
-                                //     icon: Icon(Icons.edit),
-                                //     onPressed: () {
-                                //       Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //             builder: (context) =>
-                                //                 PipsEditScreen(
-                                //                   snapshot: snapshot,
-                                //                   id: widget.id,
-                                //                 ),
-                                //           ));
-                                //     }),
-                              // )
+                              /* Positioned(
+                                right: 10,
+                                top: 50,
+                                child: IconButton(
+                                    icon: Icon(Icons.edit),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PipsEditScreen(
+                                                  snapshot: snapshot,
+                                                  id: widget.id,
+                                                ),
+                                          ));
+                                    }),
+                              ) */
                             ],
                           ),
                         ),

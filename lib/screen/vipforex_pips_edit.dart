@@ -4,12 +4,12 @@ import 'package:royaltrade/model/signal_id.dart';
 import 'package:royaltrade/services/signal_services.dart';
 
 // ignore: must_be_immutable
-class PipsEditScreen extends StatelessWidget {
+class VipForexPipsEditScreen extends StatelessWidget {
   final pipsController = TextEditingController();
   SignalFirestore _signal = SignalFirestore();
   AsyncSnapshot<List<Chart>> snapshot;
   String id;
-  PipsEditScreen({this.snapshot, this.id});
+  VipForexPipsEditScreen({this.snapshot, this.id});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class PipsEditScreen extends StatelessWidget {
                     tpPrice: snapshot.data[0].tpPrice,
                     pips: pipsController.text);
 
-                _signal.addSignal(signal0);
+                _signal.addForexVipSignal(signal0);
               },
               child: Text(
                 'Closed Order',

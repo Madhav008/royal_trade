@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:royaltrade/bloc/forexvip_id.dart';
+import 'package:royaltrade/bloc/binary_id.dart';
 import 'package:royaltrade/model/signal_id.dart';
-import 'package:royaltrade/widget/signal_widget.dart';
+import 'package:royaltrade/widget/binary_signal_widget.dart';
 
-class OpenSignal extends StatefulWidget {
+class BinaryOpenSignal extends StatefulWidget {
   @override
-  _OpenSignalState createState() => _OpenSignalState();
+  _BinaryOpenSignalState createState() => _BinaryOpenSignalState();
 }
 
-class _OpenSignalState extends State<OpenSignal> {
+class _BinaryOpenSignalState extends State<BinaryOpenSignal> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<SignalId>>(
-        stream: forexvipId.subject.stream,
+        stream: binaryId.subject.stream,
         builder: (context, snapshot) {
-          List<SignalId> reversed =
-              snapshot.data.reversed.toList(); // getPips(id[0].id);
+          var id = snapshot.data;
+          // getPips(id[0].id);
           return (snapshot.hasData)
               ? ListView.builder(
-                  itemBuilder: (context, index) => SignalWidget(
-                    id: reversed[index].id,
-                  ),
+                  itemBuilder: (context, index) => BinarySignalWidget(id: id[index].id),
                   itemCount: 3,
                 )
               /*  ListView(children: [

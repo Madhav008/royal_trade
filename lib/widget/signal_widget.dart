@@ -50,98 +50,97 @@ class _SignalWidgetState extends State<SignalWidget> {
             child: FutureBuilder<List<Chart>>(
                 future: getSignalData(widget.id),
                 builder: (context, snapshot) {
-                  return (snapshot.hasData)
-                      ? Card(
-
-
-
-                     elevation: 15.0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.bottomLeft,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xfff5f7fa),Color(0xffc3cfe2)],
-                            ),
-                          ),
-                          height: MediaQuery.of(context).size.height / 5.5,
-                          width: MediaQuery.of(context).size.width,
-
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                  left: 70,
-                                  top: 5,
-                                  child: Container(
-                                      child:
-                                          Text(snapshot.data[0].curr,style:TextStyle(
-                                      fontSize:23,color: Colors.white,fontWeight: FontWeight.bold
-                                          )))),
-                              Positioned(
-                                  top: 50,
-                                  left: 10,
-                                  child: Container(
-                                      child:
-                                          Text("Price - "+snapshot.data[0].price,style: TextStyle(
+                  return (snapshot.hasData)?Card(
+                    elevation: 15.0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xfff5f7fa), Color(0xffc3cfe2)],
+                        ),
+                      ),
+                      height: MediaQuery.of(context).size.height / 5.5,
+                      width: MediaQuery.of(context).size.width,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                              left: 70,
+                              top: 5,
+                              child: Container(
+                                  child: Text(snapshot.data[0].curr,
+                                      style: TextStyle(
+                                          fontSize: 23,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)))),
+                          Positioned(
+                              top: 50,
+                              left: 10,
+                              child: Container(
+                                  child:
+                                      Text("Price - " + snapshot.data[0].price,
+                                          style: TextStyle(
                                             fontSize: 25,
                                           )))),
-                              Positioned(
-                                  bottom: 10,
-                                  left: 10,
-                                  child: Container(
-                                      child: Text(
-                                          "Sl - "+snapshot.data[0].slPrice,style: TextStyle(
-                                        fontSize: 20
-                                      ),))),
-                              Positioned(
-                                  bottom: 10,
-                                  right: 10,
-                                  child: Container(
-                                      child: Text(
-                                          "Tp - "+snapshot.data[0].tpPrice,style: TextStyle(
-                                        fontSize: 20
-                                      ),))),
-                              Positioned(
-                                left: 10,
-                                  top: 5,
-                                  child: Container(
-                                      child:
-                                          Text(snapshot.data[0].title,style: TextStyle(
-                                            fontSize: 23,fontWeight: FontWeight.bold,color: Colors.green
-                                          ),))),
-                              Positioned(
-                                  right: 10,
-                                  top: 5,
-                                  child: Container(
-                                      child:
-                                      Text("Active",style: TextStyle(
-                                          fontSize: 23,fontWeight: FontWeight.bold,color: Colors.blue
-                                      ),))),
-                              Positioned(
-                                right: 10,
-                                top: 50,
-                                child: IconButton(
-                                    icon: Icon(Icons.edit),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PipsEditScreen(
-                                              snapshot: snapshot,
-                                              id: widget.id,
-                                            ),
-                                          ));
-                                    }),
-                              )
-                            ],
-                          ),
-                        ),
-                        color: Colors.grey[200],
-                      )
-                      : Center(
-                          child: CircularProgressIndicator(),
-                        );
+                          Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Container(
+                                  child: Text(
+                                "Sl - " + snapshot.data[0].slPrice,
+                                style: TextStyle(fontSize: 20),
+                              ))),
+                          Positioned(
+                              bottom: 10,
+                              right: 10,
+                              child: Container(
+                                  child: Text(
+                                "Tp - " + snapshot.data[0].tpPrice,
+                                style: TextStyle(fontSize: 20),
+                              ))),
+                          Positioned(
+                              left: 10,
+                              top: 5,
+                              child: Container(
+                                  child: Text(
+                                snapshot.data[0].title,
+                                style: TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green),
+                              ))),
+                          Positioned(
+                              right: 10,
+                              top: 5,
+                              child: Container(
+                                  child: Text(
+                                "Active",
+                                style: TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue),
+                              ))),
+                          Positioned(
+                            right: 10,
+                            top: 50,
+                            child: IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => PipsEditScreen(
+                                          snapshot: snapshot,
+                                          id: widget.id,
+                                        ),
+                                      ));
+                                }),
+                          )
+                        ],
+                      ),
+                    ),
+                    color: Colors.grey[200],
+                  ):SizedBox(height: 1,);
                 }),
           )
         : SizedBox(

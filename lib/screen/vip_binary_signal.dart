@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/bloc/binary_id.dart';
-import 'package:royaltrade/widget/Binary_closed.dart';
-import 'package:royaltrade/widget/binary_open.dart';
-import 'package:royaltrade/widget/closed_signal.dart';
-import 'package:royaltrade/widget/forexvip.dart';
+import 'package:royaltrade/widget/VipBInary_clased.dart';
+import 'package:royaltrade/widget/closed_vip_signal.dart';
+import 'package:royaltrade/widget/vipBinaryWidget.dart';
 
-class BinarySignal extends StatefulWidget {
+class VipBinarySignalScreen extends StatefulWidget {
   @override
-  _BinarySignalState createState() => _BinarySignalState();
+  _VipBinarySignalScreenState createState() => _VipBinarySignalScreenState();
 }
 
-class _BinarySignalState extends State<BinarySignal> {
+class _VipBinarySignalScreenState extends State<VipBinarySignalScreen> {
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     binaryId..getId();
+    super.initState();
   }
 
   @override
@@ -28,7 +26,7 @@ class _BinarySignalState extends State<BinarySignal> {
           backgroundColor: Color(0xff001535),
           elevation: 8,
           title: Text(
-            "Free Forex Signals",
+            "VIP Binary Signals",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -57,7 +55,7 @@ class _BinarySignalState extends State<BinarySignal> {
           ),
         ),
         body: TabBarView(
-          children: [BinaryOpenSignal(), BinaryClosedSignal()],
+          children: [VipBinarySignalWidget(), VipBinaryClosedSignal()],
         ),
       ),
     );

@@ -6,9 +6,11 @@ import 'package:royaltrade/model/post_model.dart';
 import 'package:royaltrade/screen/binary_signal.dart';
 import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
+import 'package:royaltrade/screen/vip_binary_signal.dart';
 import 'package:royaltrade/screen/vip_signal.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bordered_text/bordered_text.dart';
+import 'package:royaltrade/widget/vipBinaryWidget.dart';
 
 class HomeWidget extends StatelessWidget {
   String uid;
@@ -235,7 +237,7 @@ class HomeWidget extends StatelessWidget {
                 )),
           ),
           GestureDetector(
-            onTap: null,
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VipBinarySignalScreen(),)),
             child: Card(
                 elevation: 0,
                 // shape: RoundedRectangleBorder(

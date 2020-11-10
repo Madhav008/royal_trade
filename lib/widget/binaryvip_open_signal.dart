@@ -3,20 +3,21 @@ import 'package:royaltrade/model/signal.dart';
 import 'package:royaltrade/repository/api.dart';
 import 'package:royaltrade/screen/BinaryEditScreen.dart';
 import 'package:royaltrade/screen/pips_edit.dart';
+import 'package:royaltrade/screen/vipBinary_edit.dart';
 import 'package:royaltrade/services/signal_services.dart';
 
-class BinarySignalWidget extends StatefulWidget {
-  BinarySignalWidget({
+class VipBinaryOpenSignalWidget extends StatefulWidget {
+  VipBinaryOpenSignalWidget({
     @required this.id,
   });
 
   final String id;
 
   @override
-  _BinarySignalWidgetState createState() => _BinarySignalWidgetState();
+  _VipBinaryOpenSignalWidgetState createState() => _VipBinaryOpenSignalWidgetState();
 }
 
-class _BinarySignalWidgetState extends State<BinarySignalWidget> {
+class _VipBinaryOpenSignalWidgetState extends State<VipBinaryOpenSignalWidget> {
   SignalFirestore _signal = SignalFirestore();
   bool pips = false;
 
@@ -27,7 +28,7 @@ class _BinarySignalWidgetState extends State<BinarySignalWidget> {
   }
 
   getPips(String id) {
-    _signal.getBinaryOrder(id).then((value) {
+    _signal.getVipBinaryOrder(id).then((value) {
       if (value.docs[0].data().values.contains('closed') == true) {
         setState(() {
           pips = true;
@@ -133,7 +134,7 @@ class _BinarySignalWidgetState extends State<BinarySignalWidget> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  BinaryEditScreen(
+                                                  VipBinaryEditScreen(
                                                 snapshot: snapshot,
                                                 id: widget.id,
                                               ),

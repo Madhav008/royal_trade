@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:royaltrade/model/binary.dart';
 import 'package:royaltrade/model/signal_id.dart';
 
 class SignalFirestore {
@@ -21,12 +20,20 @@ class SignalFirestore {
     return _db.collection('ForexVipSignal').doc(signal.id).update(signal.toMap());
   }
 
-  Future<void> addBinarySignal(Binary signal) {
+  Future<void> addBinarySignal(SignalId signal) {
     return _db.collection('BinaryFreeSignal').doc(signal.id).set(signal.toMap());
   }
   
-  Future<void> updateBinarySignal(Binary signal) {
+  Future<void> updateBinarySignal(SignalId signal) {
     return _db.collection('BinaryFreeSignal').doc(signal.id).update(signal.toMap());
+  }
+
+  Future<void> addVipBinarySignal(SignalId signal) {
+    return _db.collection('VipBinaryFreeSignal').doc(signal.id).set(signal.toMap());
+  }
+  
+  Future<void> updateVipBinarySignal(SignalId signal) {
+    return _db.collection('VipBinaryFreeSignal').doc(signal.id).update(signal.toMap());
   }
   Future<QuerySnapshot> getPips(String id) {
     return _db
@@ -44,6 +51,12 @@ class SignalFirestore {
    Future<QuerySnapshot> getBinaryOrder(String id) {
     return _db
         .collection('BinaryFreeSignal')
+        .where('id', isEqualTo: id)
+        .get();
+  }
+   Future<QuerySnapshot> getVipBinaryOrder(String id) {
+    return _db
+        .collection('VipBinaryFreeSignal')
         .where('id', isEqualTo: id)
         .get();
   }

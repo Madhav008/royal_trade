@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:royaltrade/model/post_model.dart';
+import 'package:royaltrade/screen/binary_plans_screen.dart';
 import 'package:royaltrade/screen/binary_signal.dart';
 import 'package:royaltrade/screen/free_signal.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
@@ -254,7 +255,7 @@ class HomeWidget extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PlansScreen(uid),
+                      builder: (context) => BinaryPlansScreen(uid),
                     ));
               }
             },

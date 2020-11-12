@@ -12,7 +12,7 @@ class PlansScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -48,15 +48,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Premium",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                  ),
-                ),
-                Container(
-                  child: Tab(
-                    child: Text(
-                      "Diamond",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ),
                 ),
@@ -102,20 +94,6 @@ class PlansScreen extends StatelessWidget {
                         start: Timestamp.now(),
                         end: Timestamp.fromDate(date),
                         planId: 'premium');
-                    plans.addPlans(plan);
-                  },
-                  child: PlansWidget()),
-                  
-                  GestureDetector(
-                  onTap: () {
-                    var date = DateTime.now().add(Duration(days: 365));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "diamond",
-                        price: 800,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'diamond');
                     plans.addPlans(plan);
                   },
                   child: PlansWidget()),

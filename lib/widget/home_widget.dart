@@ -19,9 +19,6 @@ class HomeWidget extends StatelessWidget {
 
   CollectionReference subscription =
       FirebaseFirestore.instance.collection('Subscription');
-    
-  CollectionReference binarysubscription =
-      FirebaseFirestore.instance.collection('BinarySubscription');
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -105,6 +102,9 @@ class HomeWidget extends StatelessWidget {
                 )),
             child: Card(
                 elevation: 0,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(20),
+                // ),
                 color: Color(0xff232946),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -237,27 +237,7 @@ class HomeWidget extends StatelessWidget {
                 )),
           ),
           GestureDetector(
-            onTap: ()async {
-              var data = await binarysubscription
-                  .where('userId', isEqualTo: uid)
-                  .where('end', isGreaterThanOrEqualTo: Timestamp.now())
-                  .get();
-              print(data.docChanges);
-
-              if (data.docChanges.isNotEmpty) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => VipBinarySignalScreen(),
-                    ));
-              } else {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlansScreen(uid),
-                    ));
-              }
-            },
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VipBinarySignalScreen(),)),
             child: Card(
                 elevation: 0,
                 // shape: RoundedRectangleBorder(

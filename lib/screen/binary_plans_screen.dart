@@ -4,10 +4,10 @@ import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/services/plan_services.dart';
 
 // ignore: must_be_immutable
-class PlansScreen extends StatelessWidget {
+class BinaryPlansScreen extends StatelessWidget {
   PlansFirestore plans = PlansFirestore();
   String uid;
-  PlansScreen(this.uid);
+  BinaryPlansScreen(this.uid);
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,6 @@ class PlansScreen extends StatelessWidget {
                     plans.addPlans(plan);
                   },
                   child: PlansWidget()),
-                  
                   GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 365));

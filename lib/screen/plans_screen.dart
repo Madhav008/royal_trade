@@ -16,10 +16,17 @@ class PlansScreen extends StatelessWidget {
       child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
             centerTitle: true,
             title: Text(
-              "Plans",
-              style: TextStyle(color: Colors.black),
+              "Forex Plans",
+              style: TextStyle(color: Colors.purple[300],fontSize: 25,fontWeight: FontWeight.bold),
             ),
             backgroundColor: Colors.white,
             elevation: 0,
@@ -32,7 +39,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Starter",
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ),
                 ),
@@ -40,7 +47,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Pro",
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ),
                 ),
@@ -48,7 +55,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Premium",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                   ),
                 ),
@@ -56,7 +63,7 @@ class PlansScreen extends StatelessWidget {
                   child: Tab(
                     child: Text(
                       "Diamond",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                   ),
                 ),
@@ -66,59 +73,81 @@ class PlansScreen extends StatelessWidget {
           body: TabBarView(
             children: [
               GestureDetector(
-                onTap: () {
-                  var date = DateTime.now().add(Duration(days: 7));
-                  var plan = Subscription(
-                      planId: "basic",
-                      price: 200,
-                      userId: uid,
-                      start: Timestamp.now(),
-                      end: Timestamp.fromDate(date),
-                      transId: 'basic');
-                  plans.addPlans(plan);
-                },
-                child: PlansWidget(),
-              ),
-              GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 30));
+                    var plan = Subscription(
+                        planId: "Starter",
+                        price: 150,
+                        userId: uid,
+                        start: Timestamp.now(),
+                        end: Timestamp.fromDate(date),
+                        transId: 'basic');
+                    plans.addPlans(plan);
+                  },
+                  child: PlansWidget(
+                    plan: "Starter",
+                    price: 150,
+                    time: "1 MONTH",
+                    color1: Color(0xffd4fc79),
+                    color2: Color(0xff96e6a1),
+                  )),
+              GestureDetector(
+                  onTap: () {
+                    var date = DateTime.now().add(Duration(days: 92));
                     var plan = Subscription(
                         userId: uid,
                         transId: "medium",
                         price: 300,
                         start: Timestamp.now(),
                         end: Timestamp.fromDate(date),
-                        planId: 'medium');
+                        planId: 'Pro');
                     plans.addPlans(plan);
                   },
-                  child: PlansWidget()),
+                  child: PlansWidget(
+                    plan: "Pro",
+                    price: 300,
+                    time: "3 MONTHS",
+                    color1: Color(0xffe0c3fc),
+                    color2: Color(0xff8ec5fc),
+                  )),
               GestureDetector(
                   onTap: () {
-                    var date = DateTime.now().add(Duration(days: 365));
+                    var date = DateTime.now().add(Duration(days: 183));
                     var plan = Subscription(
                         userId: uid,
                         transId: "premium",
-                        price: 400,
+                        price: 500,
                         start: Timestamp.now(),
                         end: Timestamp.fromDate(date),
                         planId: 'premium');
                     plans.addPlans(plan);
                   },
-                  child: PlansWidget()),
-                  
-                  GestureDetector(
+                  child: PlansWidget(
+                    plan: "Premium",
+                    price: 500,
+                    time: "6 MONTHS",
+                    color1: Color(0xff43e97b),
+                    color2: Color(0xff38f9d7),
+                  )),
+              GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 365));
                     var plan = Subscription(
                         userId: uid,
                         transId: "diamond",
-                        price: 800,
+                        price: 700,
                         start: Timestamp.now(),
                         end: Timestamp.fromDate(date),
                         planId: 'diamond');
                     plans.addPlans(plan);
                   },
-                  child: PlansWidget()),
+                  child: PlansWidget(
+                    plan: "Diamond",
+                    price: 700,
+                    time: "1 YEAR",
+                    color1: Color(0xfffdcbf1),
+                    color2: Color(0xffe6dee9),
+                  )),
             ],
           )),
     );
@@ -126,10 +155,12 @@ class PlansScreen extends StatelessWidget {
 }
 
 class PlansWidget extends StatelessWidget {
-  const PlansWidget({
-    Key key,
-  }) : super(key: key);
-
+  String plan;
+  int price;
+  String time;
+  Color color1;
+  Color color2;
+  PlansWidget({this.plan, this.price, this.time, this.color1, this.color2});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -145,8 +176,11 @@ class PlansWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Small Plan",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  plan,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
@@ -155,15 +189,15 @@ class PlansWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "\$200",
-                      style: TextStyle(fontSize: 35, color: Colors.white),
+                      "\$" + price.toString(),
+                      style: TextStyle(fontSize: 45, color: Colors.blue,fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     Text(
-                      "Weekly ",
-                      style: TextStyle(fontSize: 35, color: Colors.white),
+                      time,
+                      style: TextStyle(fontSize: 30, color: Colors.pink[300]),
                     )
                   ],
                 ),
@@ -171,15 +205,14 @@ class PlansWidget extends StatelessWidget {
               FlatButton(
                 onPressed: null,
                 child: Text(
-                  "SELECT",
-                  style: TextStyle(color: Colors.white, fontSize: 40),
+                  "Buy Now",
+                  style: TextStyle(color: Colors.purple[300], fontSize: 40),
                 ),
               )
             ],
           ),
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Color(0xff30E8BF), Color(0xffFF8235)])),
+          decoration:
+              BoxDecoration(gradient: LinearGradient(colors: [color1, color2])),
         ),
       ),
     );

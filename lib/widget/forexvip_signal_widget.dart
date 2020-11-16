@@ -142,7 +142,7 @@ class _VipForexSignalWidgetState extends State<VipForexSignalWidget> {
                           color: Colors.grey[200],
                         )
                       : SizedBox(
-                          height: 1,
+                          height: 0,
                         );
                 }),
           )

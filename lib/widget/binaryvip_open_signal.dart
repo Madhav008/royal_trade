@@ -52,7 +52,7 @@ class _VipBinaryOpenSignalWidgetState extends State<VipBinaryOpenSignalWidget> {
             child: FutureBuilder<List<Chart>>(
                 future: getSignalData(widget.id),
                 builder: (context, snapshot) {
-                  return (snapshot.hasData)
+                  return (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data != null)
                       ? Card(
                           elevation: 15.0,
                           child: Container(

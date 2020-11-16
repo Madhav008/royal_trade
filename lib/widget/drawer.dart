@@ -4,12 +4,10 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
+import 'package:royaltrade/screen/binary_plans_screen.dart';
 import 'package:royaltrade/screen/home.dart';
-import 'package:royaltrade/screen/posts.dart';
-import 'package:royaltrade/widget/home_widget.dart';
+import 'package:royaltrade/screen/plans_screen.dart';
 
-
-// ignore: must_be_immutable
 class CustomDrawer extends StatefulWidget {
   String uid;
   CustomDrawer(this.uid);
@@ -39,10 +37,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return StreamBuilder(
       stream:
           // ignore: deprecated_member_use
-          Firestore.instance
-              .collection('user')
-              .document(widget.uid)
-              .snapshots(),
+          Firestore.instance.collection('user').doc(widget.uid).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Drawer(
@@ -90,7 +85,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyHomePage(uid: widget.uid,),
+                          builder: (context) => MyHomePage(
+                            uid: widget.uid,
+                          ),
                         ));
                   },
                   title: Text("Home"),
@@ -130,7 +127,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 //         },
                 //       );
                 //     }),
-              
+
                 // ListTile(
                 //     leading: Icon(Icons.info,
                 //         color: Color.fromRGBO(143, 148, 251, 1)),
@@ -142,17 +139,36 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 //             builder: (context) => InformationPage(),
                 //           ));
                 //     }),
-              ListTile(
-                        onTap: () => AuthBloc().signOutUser().then((value) {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => Login2()),
-                              (Route<dynamic> route) => false);
-                        }),
-                        title: Text("LogOut"),
-                        leading: Icon(EvaIcons.logOut,
-                            color: Color.fromRGBO(143, 148, 251, 1)),
-                      ),
+                ListTile(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlansScreen(widget.uid),
+                      )),
+                  title: Text("Forex Plans"),
+                  leading: Icon(EvaIcons.plus,
+                      color: Color.fromRGBO(143, 148, 251, 1)),
+                ),
+                ListTile(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BinaryPlansScreen(widget.uid),
+                      )),
+                  title: Text("Binary Plans"),
+                  leading: Icon(EvaIcons.npmOutline,
+                      color: Color.fromRGBO(143, 148, 251, 1)),
+                ),
+                ListTile(
+                  onTap: () => AuthBloc().signOutUser().then((value) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => Login2()),
+                        (Route<dynamic> route) => false);
+                  }),
+                  title: Text("LogOut"),
+                  leading: Icon(EvaIcons.logOut,
+                      color: Color.fromRGBO(143, 148, 251, 1)),
+                ),
                 SizedBox(height: 20),
               ],
             ),

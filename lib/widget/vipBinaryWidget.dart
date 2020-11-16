@@ -11,24 +11,19 @@ class VipBinarySignalWidget extends StatefulWidget {
 }
 
 class _VipBinarySignalWidgetState extends State<VipBinarySignalWidget> {
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<SignalId>>(
         stream: binaryId.subject.stream,
         builder: (context, snapshot) {
           var id = snapshot.data;
-          // getPips(id[0].id);
           return (snapshot.hasData)
               ? ListView.builder(
                   itemBuilder: (context, index) =>
                       VipBinaryOpenSignalWidget(id: id[index].id),
                   itemCount: id.length,
                 )
-              /*  ListView(children: [
-                  SignalWidget(id: id[0].id),
-                  SignalWidget(id: id[1].id),
-                  SignalWidget(id: id[2].id)
-                ]) */
               : Center(
                   child: CircularProgressIndicator(),
                 );

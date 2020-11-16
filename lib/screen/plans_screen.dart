@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:royaltrade/model/subscription.dart';
+import 'package:royaltrade/screen/payment_screen.dart';
 import 'package:royaltrade/services/plan_services.dart';
 
 // ignore: must_be_immutable
@@ -26,7 +26,10 @@ class PlansScreen extends StatelessWidget {
             centerTitle: true,
             title: Text(
               "Forex Plans",
-              style: TextStyle(color: Colors.purple[300],fontSize: 25,fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.purple[300],
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
             backgroundColor: Colors.white,
             elevation: 0,
@@ -75,14 +78,16 @@ class PlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 30));
-                    var plan = Subscription(
-                        planId: "Starter",
-                        price: 150,
-                        userId: uid,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        transId: 'basic');
-                    plans.addPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentScreen(
+                              planId: "Starter",
+                              price: 150,
+                              userId: uid,
+                              end: Timestamp.fromDate(date),
+                           ),
+                        ));
                   },
                   child: PlansWidget(
                     plan: "Starter",
@@ -94,14 +99,16 @@ class PlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 92));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "medium",
-                        price: 300,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'Pro');
-                    plans.addPlans(plan);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentScreen(
+                            userId: uid,
+                            price: 300,
+                            end: Timestamp.fromDate(date),
+                            planId: 'Pro'),
+                      ),
+                    );
                   },
                   child: PlansWidget(
                     plan: "Pro",
@@ -113,14 +120,16 @@ class PlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 183));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "premium",
-                        price: 500,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'premium');
-                    plans.addPlans(plan);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentScreen(
+                            userId: uid,
+                            price: 500,
+                            end: Timestamp.fromDate(date),
+                            planId: 'premium'),
+                      ),
+                    );
                   },
                   child: PlansWidget(
                     plan: "Premium",
@@ -132,14 +141,14 @@ class PlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 365));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "diamond",
-                        price: 700,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'diamond');
-                    plans.addPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PaymentScreen(
+                                userId: uid,
+                                price: 700,
+                                end: Timestamp.fromDate(date),
+                                planId: 'diamond')));
                   },
                   child: PlansWidget(
                     plan: "Diamond",
@@ -190,7 +199,10 @@ class PlansWidget extends StatelessWidget {
                   children: [
                     Text(
                       "\$" + price.toString(),
-                      style: TextStyle(fontSize: 45, color: Colors.blue,fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 45,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       width: 20,

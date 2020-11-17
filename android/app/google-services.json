@@ -1,63 +1,42 @@
 {
   "project_info": {
-    "project_number": "360526899063",
-    "firebase_url": "https://coppytrading-d6134.firebaseio.com",
-    "project_id": "coppytrading-d6134",
-    "storage_bucket": "coppytrading-d6134.appspot.com"
+    "project_number": "762398489918",
+    "firebase_url": "https://royaltrade-d9134.firebaseio.com",
+    "project_id": "royaltrade-d9134",
+    "storage_bucket": "royaltrade-d9134.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:360526899063:android:1d304fa1161401507f6372",
-        "android_client_info": {
-          "package_name": "com.example.coppytrading"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAdavbof_JHra4xxeIRS8cfroYmobqDl3E"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:360526899063:android:3619daea8e6259a17f6372",
+        "mobilesdk_app_id": "1:762398489918:android:8dcd56d447262aa2a1c06f",
         "android_client_info": {
           "package_name": "com.forex.royaltrade"
         }
       },
       "oauth_client": [
         {
-          "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+          "client_id": "762398489918-rfuj2iahjg9aa402fnhtqo4p9ecautta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.forex.royaltrade",
+            "certificate_hash": "e5a367d5123b673add613888eb9a1d106855c669"
+          }
+        },
+        {
+          "client_id": "762398489918-qvf71e44jnrgkund7ut1p28tdao6uro2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAdavbof_JHra4xxeIRS8cfroYmobqDl3E"
+          "current_key": "AIzaSyDG8LVt5AYVQmIawgKfavWPB741ZCMpRDM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "360526899063-k2hkv3mkjeluhpcekv7lk47i14t9p4pe.apps.googleusercontent.com",
+              "client_id": "762398489918-qvf71e44jnrgkund7ut1p28tdao6uro2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

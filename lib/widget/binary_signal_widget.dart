@@ -73,7 +73,7 @@ class _BinarySignalWidgetState extends State<BinarySignalWidget> {
                                         child: Text(snapshot.data[0].curr,
                                             style: TextStyle(
                                                 fontSize: 23,
-                                                color: Colors.white,
+                                                color: Colors.black,
                                                 fontWeight: FontWeight.bold)))),
                                 Positioned(
                                     top: 50,

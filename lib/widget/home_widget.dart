@@ -20,7 +20,7 @@ class HomeWidget extends StatelessWidget {
 
   CollectionReference subscription =
       FirebaseFirestore.instance.collection('Subscription');
-    
+
   CollectionReference binarysubscription =
       FirebaseFirestore.instance.collection('BinarySubscription');
   @override
@@ -238,7 +238,7 @@ class HomeWidget extends StatelessWidget {
                 )),
           ),
           GestureDetector(
-            onTap: ()async {
+            onTap: () async {
               var data = await binarysubscription
                   .where('userId', isEqualTo: uid)
                   .where('end', isGreaterThanOrEqualTo: Timestamp.now())
@@ -321,8 +321,8 @@ class HomeWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(6.0),
             child: Text(
-              "Recent News",
-              style: TextStyle(color: Colors.white, fontSize: 23),
+              "---- Recent News ----",
+              style: TextStyle(color: Colors.white, fontSize: 28),
             ),
           ),
           Padding(
@@ -331,10 +331,10 @@ class HomeWidget extends StatelessWidget {
               color: Color(0xff232946),
               elevation: 0,
               child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/news1.png"),
-                        fit: BoxFit.fitWidth)),
+                // decoration: BoxDecoration(
+                //     image: DecorationImage(
+                //         image: AssetImage("images/news1.png"),
+                //         fit: BoxFit.fitWidth)),
                 child: StreamBuilder(
                   stream: post.snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -344,22 +344,69 @@ class HomeWidget extends StatelessWidget {
                     if (snapshot.hasData) {
                       return ListView.builder(
                         shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           var post = Posts.fromFirestore(
                               snapshot.data.docs[index].data());
                           DateTime date = post.date.toDate();
                           var _date = DateFormat('yyyy-MM-dd').format(date);
-                          return ListTile(
-                            title: Text(
-                              post.title,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            leading: Image.network(post.img),
-                            subtitle: Text(
-                              _date,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          );
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                      height: 80,
+                                      width: 80,
+                                      child: Image.network(
+                                        post.img,
+                                        fit: BoxFit.cover,
+                                      )),
+                                  Text(
+                                    _date,
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Center(
+                                child: Container(
+                                  child: Text(
+                                    post.title,
+                                    style: TextStyle(
+                                        fontSize: 23,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(20),
+                                child: Text(
+                                  post.description,
+                                  style: TextStyle(
+                                      fontSize: 19, color: Colors.white),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              )
+                            ],
+                          ); // ListTile(
+                          //   title: Text(
+                          //     post.title,
+                          //     style: TextStyle(color: Colors.white),
+                          //   ),
+                          //   leading: Image.network(post.img),
+                          //   subtitle: Text(
+                          //     post.description,
+                          //     style: TextStyle(color: Colors.white,fontSize: 15),
+                          //   ),
+                          // );
                         },
                         itemCount: snapshot.data.docs.length,
                       );

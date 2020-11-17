@@ -28,7 +28,7 @@ class _BinarySignalState extends State<BinarySignal> {
           backgroundColor: Color(0xff001535),
           elevation: 8,
           title: Text(
-            "Free Forex Signals",
+            "Free Binary Signals",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,

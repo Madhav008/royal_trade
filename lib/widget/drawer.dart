@@ -4,7 +4,9 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
+import 'package:royaltrade/screen/admin_screen.dart';
 import 'package:royaltrade/screen/binary_plans_screen.dart';
+import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
 
@@ -157,6 +159,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       )),
                   title: Text("Binary Plans"),
                   leading: Icon(EvaIcons.npmOutline,
+                      color: Color.fromRGBO(143, 148, 251, 1)),
+                ),
+                ListTile(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DataScreen(widget.uid),
+                      )),
+                  title: Text("Post News"),
+                  leading: Icon(EvaIcons.info,
+                      color: Color.fromRGBO(143, 148, 251, 1)),
+                ),
+                ListTile(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdminScreen(),
+                      )),
+                  title: Text("Premium User"),
+                  leading: Icon(EvaIcons.doneAll,
                       color: Color.fromRGBO(143, 148, 251, 1)),
                 ),
                 ListTile(

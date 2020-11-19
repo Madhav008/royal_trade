@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
 import 'package:royaltrade/screen/data.dart';
+import 'package:royaltrade/screen/home.dart';
 
 class SignUp2 extends StatefulWidget {
   @override
@@ -206,7 +207,7 @@ class _SignUp2State extends State<SignUp2> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => DataScreen(
+                                    builder: (context) => MyHomePage(
                                       uid: value.uid,
                                     ),
                                   ));
@@ -282,9 +283,9 @@ class _SignUp2State extends State<SignUp2> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DataScreen(
-                                  uid: user.uid,
-                                ),
+                                builder: (context) => MyHomePage(
+                                      uid: user.uid,
+                                    ),
                               ));
                         }
                       });

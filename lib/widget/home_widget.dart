@@ -396,17 +396,7 @@ class HomeWidget extends StatelessWidget {
                                 ),
                               )
                             ],
-                          ); // ListTile(
-                          //   title: Text(
-                          //     post.title,
-                          //     style: TextStyle(color: Colors.white),
-                          //   ),
-                          //   leading: Image.network(post.img),
-                          //   subtitle: Text(
-                          //     post.description,
-                          //     style: TextStyle(color: Colors.white,fontSize: 15),
-                          //   ),
-                          // );
+                          ); 
                         },
                         itemCount: snapshot.data.docs.length,
                       );

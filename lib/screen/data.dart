@@ -9,7 +9,7 @@ import 'package:royaltrade/services/flutfirebase.dart';
 
 class DataScreen extends StatefulWidget {
   String uid;
-  DataScreen({this.uid});
+  DataScreen(this.uid);
   @override
   _DataScreenState createState() => _DataScreenState();
 }
@@ -32,15 +32,7 @@ class _DataScreenState extends State<DataScreen> {
     var authBloc = Provider.of<AuthBloc>(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              icon: Icon(Icons.dashboard),
-              onPressed: () {
-                authBloc.signOutUser();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Login2()));
-              })
-        ],
+        
       ),
       body: ListView(
         children: [
@@ -111,25 +103,9 @@ class _DataScreenState extends State<DataScreen> {
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => PostScreen(),
                   )),
-              child: Text("data")),
-          AlertDialog(
-            title: Text(
-              "Error",
-            ),
-            content: Text("Wrong Password"),
-            actions: <Widget>[
-              OutlineButton(
-                onPressed: () {
-                  Navigator.canPop(context);
-                },
-                child: Text("Ok"),
-              ),
-            ],
-          ),
+              child: Text("Post Screen")),
         ],
       ),
     );
   }
-
- 
 }

@@ -11,7 +11,6 @@ import 'package:royaltrade/screen/vip_binary_signal.dart';
 import 'package:royaltrade/screen/vip_signal.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bordered_text/bordered_text.dart';
-import 'package:royaltrade/widget/vipBinaryWidget.dart';
 
 class HomeWidget extends StatelessWidget {
   String uid;

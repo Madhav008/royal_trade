@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:royaltrade/Authentication/reset_pass.dart';
 import 'package:royaltrade/Authentication/signup.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
-import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 
 class Login2 extends StatefulWidget {

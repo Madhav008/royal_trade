@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/bloc/binary_id.dart';
 import 'package:royaltrade/widget/VipBInary_clased.dart';
-import 'package:royaltrade/widget/closed_vip_signal.dart';
 import 'package:royaltrade/widget/vipBinaryWidget.dart';
 
 class VipBinarySignalScreen extends StatefulWidget {

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/bloc/binary_id.dart';
 import 'package:royaltrade/widget/Binary_closed.dart';
 import 'package:royaltrade/widget/binary_open.dart';
-import 'package:royaltrade/widget/closed_signal.dart';
-import 'package:royaltrade/widget/forexvip.dart';
 
 class BinarySignal extends StatefulWidget {
   @override
@@ -13,7 +11,6 @@ class BinarySignal extends StatefulWidget {
 class _BinarySignalState extends State<BinarySignal> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     binaryId..getId();
   }

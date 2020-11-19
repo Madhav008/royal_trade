@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
-import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 
 class SignUp2 extends StatefulWidget {

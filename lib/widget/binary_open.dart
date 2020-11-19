@@ -14,21 +14,19 @@ class _BinaryOpenSignalState extends State<BinaryOpenSignal> {
     return StreamBuilder<List<SignalId>>(
         stream: binaryId.subject.stream,
         builder: (context, snapshot) {
-          var id = snapshot.data.reversed.toList();
-          // getPips(id[0].id);
-          return (snapshot.hasData)
-              ? ListView.builder(
-                  itemBuilder: (context, index) => BinarySignalWidget(id: id[index].id),
-                  itemCount: 3,
-                )
-              /*  ListView(children: [
-                  SignalWidget(id: id[0].id),
-                  SignalWidget(id: id[1].id),
-                  SignalWidget(id: id[2].id)
-                ]) */
-              : Center(
-                  child: CircularProgressIndicator(),
-                );
+          if (snapshot.hasData) {
+            var id = snapshot.data.reversed.toList();
+            return ListView.builder(
+              itemBuilder: (context, index) =>
+                  BinarySignalWidget(id: id[index].id),
+              itemCount: 3,
+            );
+          }else{
+            return   Center(
+            child: CircularProgressIndicator(),
+          );
+          }
+        
         });
   }
 }

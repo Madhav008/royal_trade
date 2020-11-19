@@ -63,7 +63,6 @@ class AdminScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var post = Subscription.fromFirestore(
                             snapshot.data.docs[index].data());
-                        var username = firestoreService.fetchUser(post.userId);
 
                         var _datestart = DateFormat('yyyy-MM-dd')
                             .format(post.start.toDate());
@@ -116,7 +115,6 @@ class AdminScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var post = Subscription.fromFirestore(
                             snapshot.data.docs[index].data());
-                        var username = firestoreService.fetchUser(post.userId);
 
                         var _datestart = DateFormat('yyyy-MM-dd')
                             .format(post.start.toDate());

@@ -15,7 +15,6 @@ class _ForexVipState extends State<ForexVip> {
         stream: forexvipId.subject.stream,
         builder: (context, snapshot) {
           var id = snapshot.data;
-          // getPips(id[0].id);
           return (snapshot.hasData)
               ? ListView.builder(
                   itemBuilder: (context, index) => VipForexSignalWidget(
@@ -23,7 +22,6 @@ class _ForexVipState extends State<ForexVip> {
                   ),
                   itemCount: snapshot.data.length,
                 )
-           
               : Center(
                   child: CircularProgressIndicator(),
                 );

@@ -19,7 +19,7 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  String _launchUrl = 'https://t.me/traders_hubs';
+  // String _launchUrl = 'https://t.me/traders_hubs';
 
   // Future<void> _launchInBrowser(String url) async {
   //   if (await canLaunch(url)) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:royaltrade/bloc/binary_id.dart';
 import 'package:royaltrade/model/signal_id.dart';
-import 'package:royaltrade/widget/binary_signal_widget.dart';
 
 import 'binaryvip_open_signal.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
 import 'package:royaltrade/model/post_model.dart';
 import 'package:royaltrade/model/user.dart';
@@ -29,7 +28,6 @@ class _DataScreenState extends State<DataScreen> {
   FireStoreServices firestoreService = new FireStoreServices();
   @override
   Widget build(BuildContext context) {
-    var authBloc = Provider.of<AuthBloc>(context);
     return Scaffold(
       appBar: AppBar(
         
@@ -49,9 +47,7 @@ class _DataScreenState extends State<DataScreen> {
                     Container(
                       child: Text(user.email),
                     ),
-                    Container(
-                        // child: Image.network(user.image),
-                        ),
+                    
                   ],
                 );
               } else {

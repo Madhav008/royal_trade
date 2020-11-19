@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/model/signal.dart';
 import 'package:royaltrade/repository/api.dart';
 import 'package:royaltrade/screen/BinaryEditScreen.dart';
-import 'package:royaltrade/screen/pips_edit.dart';
 import 'package:royaltrade/services/signal_services.dart';
 
 class BinarySignalWidget extends StatefulWidget {

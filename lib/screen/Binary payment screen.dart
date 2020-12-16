@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:royaltrade/model/binary_status.dart';
 import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/model/status_transId.dart';
 
@@ -79,7 +80,7 @@ class _BinaryPaymentScreenState extends State<BinaryPaymentScreen> {
           RaisedButton(
             child: Text("Buy Now"),
             onPressed: () async {
-              var status = await TransStatus(
+              var status = await BinaryStatus(
                   userId: widget.userId,
                   payername: widget.payerName,
                   bitcoinAddress: widget.bitcoinAddress,
@@ -96,7 +97,7 @@ class _BinaryPaymentScreenState extends State<BinaryPaymentScreen> {
                   end: widget.end,
                   transId: widget.transId);
 
-              plans.addUserStatus(status);
+              plans.addBinaryUserStatus(status);
 
               plans.addBinaryPlans(plan);
             },

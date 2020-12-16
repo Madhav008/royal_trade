@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:royaltrade/model/binary_status.dart';
 import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/model/status_transId.dart';
 
@@ -32,5 +33,7 @@ class PlansFirestore {
   Future<void> addUserStatus(TransStatus status) {
      _db.collection("TransactionStaus").doc().set(status.toMap());
   }
-
+Future<void> addBinaryUserStatus(BinaryStatus status) {
+     _db.collection("BinaryStaus").doc().set(status.toMap());
+  }
 }

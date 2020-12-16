@@ -27,6 +27,9 @@ class HomeWidget extends StatelessWidget {
   CollectionReference status_collection =
       FirebaseFirestore.instance.collection('TransactionStaus');
 
+CollectionReference binarystatus_collection =
+      FirebaseFirestore.instance.collection('BinaryStaus');
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -255,7 +258,11 @@ class HomeWidget extends StatelessWidget {
                   .get();
               print(data.docChanges);
 
-              if (data.docChanges.isNotEmpty) {
+              var binaryStatus = await binarystatus_collection
+                  .where('userId', isEqualTo: uid)
+                  .where('result', isEqualTo: 'approved')
+                  .get();
+              if (data.docChanges.isNotEmpty && binaryStatus.docChanges.isNotEmpty) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -163,6 +163,7 @@ class PlansScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class PlansWidget extends StatelessWidget {
   String plan;
   int price;

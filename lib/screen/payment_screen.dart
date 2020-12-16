@@ -50,7 +50,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   start: Timestamp.now(),
                   end: widget.end,
                   transId: widget.transId);
-              plans.addPlans(plan);
+              plans.addPlans(plan); 
             },
           )
         ],

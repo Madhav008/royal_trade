@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/widget/drawer.dart';
 import 'package:royaltrade/widget/home_widget.dart';
 
+// ignore: must_be_immutable
 class MyHomePage extends StatefulWidget {
   String uid;
 

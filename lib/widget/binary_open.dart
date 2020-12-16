@@ -21,11 +21,11 @@ class _BinaryOpenSignalState extends State<BinaryOpenSignal> {
                   BinarySignalWidget(id: id[index].id),
               itemCount: 3,
             );
-          }else{
+          }
             return   Center(
             child: CircularProgressIndicator(),
           );
-          }
+          
         
         });
   }

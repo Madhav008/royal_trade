@@ -10,6 +10,7 @@ import 'package:royaltrade/screen/data.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
 
+// ignore: must_be_immutable
 class CustomDrawer extends StatefulWidget {
   String uid;
   CustomDrawer(this.uid);

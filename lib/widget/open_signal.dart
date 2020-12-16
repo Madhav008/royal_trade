@@ -22,11 +22,10 @@ class _OpenSignalState extends State<OpenSignal> {
               ),
               itemCount: 3,
             );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
           }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         });
   }
 }

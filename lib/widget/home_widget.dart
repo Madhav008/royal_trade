@@ -12,6 +12,7 @@ import 'package:royaltrade/screen/vip_signal.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bordered_text/bordered_text.dart';
 
+// ignore: must_be_immutable
 class HomeWidget extends StatelessWidget {
   String uid;
   HomeWidget(this.uid);
@@ -178,6 +179,7 @@ class HomeWidget extends StatelessWidget {
                       builder: (context) => PlansScreen(uid),
                     ));
               }
+              //TODO : Made an Another Screen Called StautusScreen
             },
             child: Card(
                 elevation: 0,
@@ -257,6 +259,8 @@ class HomeWidget extends StatelessWidget {
                       builder: (context) => BinaryPlansScreen(uid),
                     ));
               }
+              //TODO : Made an Another Screen Called StautusScreen
+
             },
             child: Card(
                 elevation: 0,

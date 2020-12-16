@@ -6,6 +6,7 @@ import 'package:royaltrade/model/user.dart';
 import 'package:royaltrade/screen/posts.dart';
 import 'package:royaltrade/services/flutfirebase.dart';
 
+// ignore: must_be_immutable
 class DataScreen extends StatefulWidget {
   String uid;
   DataScreen(this.uid);

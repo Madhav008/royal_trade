@@ -5,6 +5,7 @@ import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/model/user.dart';
 import 'package:royaltrade/services/flutfirebase.dart';
 
+// ignore: must_be_immutable
 class AdminScreen extends StatelessWidget {
   CollectionReference plans =
       FirebaseFirestore.instance.collection('Subscription');

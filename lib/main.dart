@@ -34,30 +34,34 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: MultiProvider(
-          providers: [
-            Provider(
-              create: (context) => authBloc,
-            ),
-          ],
-          child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                primaryColor: Color(0xff232946),
-                primaryColorDark: Color.fromRGBO(149, 76, 233, 1),
-                primarySwatch: Colors.blue,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
-              home:
-                 /*  MyHomePage() */  StreamBuilder(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return MyHomePage(
-                    uid: FirebaseAuth.instance.currentUser.uid,
-                  );
-                } else {
-                  return Login2();
-                }
-    }))));
+        providers: [
+          Provider(
+            create: (context) => authBloc,
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Color(0xff232946),
+            primaryColorDark: Color.fromRGBO(149, 76, 233, 1),
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home:
+              /*  MyHomePage() */ StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return MyHomePage(
+                  uid: FirebaseAuth.instance.currentUser.uid,
+                );
+              } else {
+                return Login2();
+              }
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -106,7 +106,7 @@ class _BinarySignalWidgetState extends State<BinarySignalWidget> {
                                     top: 5,
                                     child: Container(
                                         child: Text(
-                                      "title",
+                                      "Pair",
                                       style: TextStyle(
                                           fontSize: 23,
                                           fontWeight: FontWeight.bold,

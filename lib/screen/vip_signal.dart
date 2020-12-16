@@ -25,7 +25,7 @@ class _VipSignalScreenState extends State<VipSignalScreen> {
           backgroundColor: Color(0xff001535),
           elevation: 8,
           title: Text(
-            "Free Forex Signals",
+            "VIP Forex Signals",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,

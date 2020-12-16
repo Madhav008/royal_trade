@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/services/plan_services.dart';
 
-class PaymentScreen extends StatefulWidget {
+class BinaryPaymentScreen extends StatefulWidget {
   String planId;
   int price;
   String userId;
   Timestamp end;
   String transId;
 
-  PaymentScreen({this.planId, this.price, this.userId, this.end, this.transId});
+  BinaryPaymentScreen({this.planId, this.price, this.userId, this.end, this.transId});
 
   @override
-  _PaymentScreenState createState() => _PaymentScreenState();
+  _BinaryPaymentScreenState createState() => _BinaryPaymentScreenState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
+class _BinaryPaymentScreenState extends State<BinaryPaymentScreen> {
   PlansFirestore plans = PlansFirestore();
 
   @override
@@ -48,7 +48,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             onChanged: (value) {
               widget.transId = value;
             },
-         
+
             decoration: InputDecoration(hintText: "Enter Trasaction Id"),
           ),
           SizedBox(height: 15,),

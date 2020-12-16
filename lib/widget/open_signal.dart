@@ -16,19 +16,19 @@ class _OpenSignalState extends State<OpenSignal> {
         builder: (context, snapshot) {
           List<SignalId> reversed =
               snapshot.data.reversed.toList(); // getPips(id[0].id);
-          return (snapshot.hasData)
-              ? ListView.builder(
+          if(snapshot.hasData){
+              return ListView.builder(
                   itemBuilder: (context, index) => SignalWidget(
                     id: reversed[index].id,
                   ),
                   itemCount: 3,
-                )
+                );}
               /*  ListView(children: [
                   SignalWidget(id: id[0].id),
                   SignalWidget(id: id[1].id),
                   SignalWidget(id: id[2].id)
                 ]) */
-              : Center(
+             return Center(
                   child: CircularProgressIndicator(),
                 );
         });

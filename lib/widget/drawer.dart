@@ -4,6 +4,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:royaltrade/Authentication/login.dart';
 import 'package:royaltrade/bloc/auth_bloc.dart';
+import 'package:royaltrade/screen/admin_screen.dart';
 import 'package:royaltrade/screen/binary_plans_screen.dart';
 import 'package:royaltrade/screen/home.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
@@ -128,17 +129,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 //       );
                 //     }),
 
-                // ListTile(
-                //     leading: Icon(Icons.info,
-                //         color: Color.fromRGBO(143, 148, 251, 1)),
-                //     title: Text("Guidelines"),
-                //     onTap: () {
-                //       Navigator.push(
-                //           context,
-                //           MaterialPageRoute(
-                //             builder: (context) => InformationPage(),
-                //           ));
-                //     }),
+                ListTile(
+                    leading: Icon(Icons.info,
+                        color: Color.fromRGBO(143, 148, 251, 1)),
+                    title: Text("Admin"),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AdminScreen(),
+                          ));
+                    }),
                 ListTile(
                   onTap: () => Navigator.push(
                       context,

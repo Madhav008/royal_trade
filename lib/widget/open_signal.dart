@@ -23,11 +23,7 @@ class _OpenSignalState extends State<OpenSignal> {
                   ),
                   itemCount: 3,
                 );}
-              /*  ListView(children: [
-                  SignalWidget(id: id[0].id),
-                  SignalWidget(id: id[1].id),
-                  SignalWidget(id: id[2].id)
-                ]) */
+           
              return Center(
                   child: CircularProgressIndicator(),
                 );

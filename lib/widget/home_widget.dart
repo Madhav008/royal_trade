@@ -23,6 +23,10 @@ class HomeWidget extends StatelessWidget {
 
   CollectionReference binarysubscription =
       FirebaseFirestore.instance.collection('BinarySubscription');
+
+  CollectionReference status_collection =
+      FirebaseFirestore.instance.collection('TransactionStaus');
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -165,8 +169,14 @@ class HomeWidget extends StatelessWidget {
                   .where('end', isGreaterThanOrEqualTo: Timestamp.now())
                   .get();
               print(data.docChanges);
+              var status = await status_collection
+                  .where('userId', isEqualTo: uid)
+                  .where('result', isEqualTo: 'approved')
+                  .get();
 
-              if (data.docChanges.isNotEmpty) {
+              print(status.docChanges);
+
+              if (status.docChanges.isNotEmpty && data.docChanges.isNotEmpty) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -318,7 +328,6 @@ class HomeWidget extends StatelessWidget {
                   ),
                 )),
           ),
-          
           Padding(
             padding: const EdgeInsets.all(6.0),
             child: Text(

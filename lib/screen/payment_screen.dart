@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:royaltrade/model/subscription.dart';
 import 'package:royaltrade/services/plan_services.dart';
+import 'package:royaltrade/model/status_transId.dart';
 
 class PaymentScreen extends StatefulWidget {
   String planId;
@@ -9,6 +10,8 @@ class PaymentScreen extends StatefulWidget {
   String userId;
   Timestamp end;
   String transId;
+  String payerName;
+  String bitcoinAddress;
 
   PaymentScreen({this.planId, this.price, this.userId, this.end, this.transId});
 
@@ -29,47 +32,70 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ),
       ),
       body: Column(
-
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(widget.planId.toUpperCase()+' PLAN',style: TextStyle(fontSize: 25),),
-          SizedBox(height: 15,),
-          Text(widget.price.toString()+" USD",style: TextStyle(fontSize: 18),),
-          TextField(
-            onChanged: (value) {
-              widget.transId = value;
-            },
-
-            decoration: InputDecoration(hintText: "Enter BTC Address",),
+          Text(
+            widget.planId.toUpperCase() + ' PLAN',
+            style: TextStyle(fontSize: 25),
           ),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            widget.price.toString() + " USD",
+            style: TextStyle(fontSize: 18),
+          ),
+          TextField(
+            onChanged: (value) {
+              widget.bitcoinAddress = value;
+            },
+            decoration: InputDecoration(
+              hintText: "Enter BTC Address",
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
           TextField(
             onChanged: (value) {
               widget.transId = value;
             },
-         
             decoration: InputDecoration(hintText: "Enter Trasaction Id"),
           ),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           TextField(
             onChanged: (value) {
-              widget.transId = value;
+              widget.payerName = value;
             },
-
             decoration: InputDecoration(hintText: "Payer Name"),
           ),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           RaisedButton(
             child: Text("Buy Now"),
-            onPressed: () {
-              var plan = Subscription(
+            onPressed: () async {
+              var plan = await Subscription(
                   planId: widget.planId,
                   price: widget.price,
                   userId: widget.userId,
                   start: Timestamp.now(),
                   end: widget.end,
                   transId: widget.transId);
+
+              var status = await TransStatus(
+                  userId: widget.userId,
+                  payername: widget.payerName,
+                  bitcoinAddress: widget.bitcoinAddress,
+                  planName: widget.planId,
+                  price: widget.price,
+                  transId: widget.transId,
+                  result: "pending");
+
+              plans.addUserStatus(status);
               plans.addPlans(plan);
             },
           )

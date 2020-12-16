@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:royaltrade/model/status_transId.dart';
 import 'package:royaltrade/model/subscription.dart';
 
 class AdminScreen extends StatelessWidget {
   CollectionReference plans =
-      FirebaseFirestore.instance.collection('Subscription');
+      FirebaseFirestore.instance.collection('TransactionStaus');
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +23,38 @@ class AdminScreen extends StatelessWidget {
             return ListView.builder(
               itemBuilder: (context, index) {
                 var post =
-                    Subscription.fromFirestore(snapshot.data.docs[index].data());
-
+                    TransStatus.fromFirestore(snapshot.data.docs[index].data());
+                print(post.toMap());
                 return ListTile(
-                  title: Text(post.planId),
+                  title: Text(post.payername),
                   subtitle: Text(post.price.toString()),
+                  trailing: Container(
+                    width: 90,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.approval,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
               itemCount: snapshot.data.docs.length,
             );
-          } else {
-            return Center(child: Text("loading"));
           }
+          return Center(child: Text("loading"));
         },
       ),
     );

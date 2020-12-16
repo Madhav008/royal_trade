@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:royaltrade/model/subscription.dart';
+import 'package:royaltrade/screen/Binary%20payment%20screen.dart';
 import 'package:royaltrade/screen/plans_screen.dart';
 import 'package:royaltrade/services/plan_services.dart';
 
@@ -27,7 +28,10 @@ class BinaryPlansScreen extends StatelessWidget {
             centerTitle: true,
             title: Text(
               "Binary Plans",
-              style: TextStyle(color: Colors.purple[300],fontSize: 25,fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.purple[300],
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
             backgroundColor: Colors.white,
             elevation: 0,
@@ -38,7 +42,6 @@ class BinaryPlansScreen extends StatelessWidget {
               tabs: [
                 Container(
                   child: Tab(
-                
                     child: Text(
                       "Starter",
                       style: TextStyle(fontSize: 20, color: Colors.black),
@@ -77,14 +80,14 @@ class BinaryPlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 30));
-                    var plan = Subscription(
-                        planId: "Starter",
-                        price: 100,
-                        userId: uid,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        transId: 'basic');
-                    plans.addBinaryPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BinaryPaymentScreen(
+                                userId: uid,
+                                price: 100,
+                                end: Timestamp.fromDate(date),
+                                planId: 'Pro')));
                   },
                   child: PlansWidget(
                     plan: "Starter",
@@ -96,14 +99,14 @@ class BinaryPlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 92));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "Pro",
-                        price: 200,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'medium');
-                    plans.addBinaryPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BinaryPaymentScreen(
+                                userId: uid,
+                                price: 200,
+                                end: Timestamp.fromDate(date),
+                                planId: 'Pro')));
                   },
                   child: PlansWidget(
                     plan: "Pro",
@@ -115,14 +118,14 @@ class BinaryPlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 183));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "premium",
-                        price: 350,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'premium');
-                    plans.addBinaryPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BinaryPaymentScreen(
+                                userId: uid,
+                                price: 350,
+                                end: Timestamp.fromDate(date),
+                                planId: 'premium')));
                   },
                   child: PlansWidget(
                     plan: "Premium",
@@ -134,14 +137,14 @@ class BinaryPlansScreen extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     var date = DateTime.now().add(Duration(days: 365));
-                    var plan = Subscription(
-                        userId: uid,
-                        transId: "Diamond",
-                        price: 500,
-                        start: Timestamp.now(),
-                        end: Timestamp.fromDate(date),
-                        planId: 'diamond');
-                    plans.addBinaryPlans(plan);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BinaryPaymentScreen(
+                                userId: uid,
+                                price: 500,
+                                end: Timestamp.fromDate(date),
+                                planId: 'diamond')));
                   },
                   child: PlansWidget(
                     plan: "Diamond",
